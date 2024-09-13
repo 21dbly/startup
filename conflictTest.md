@@ -1,0 +1,1 @@
+I created the conflictTest md file in my developlment environment
