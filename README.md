@@ -8,6 +8,8 @@ We've all used to-do lists in our lives, whether it's on paper, on an app, or ma
 
 ### Design
 
+![application design including 4 main html pages](21dbly/startup/specificationDesign.pdf)
+
 ### Key features
 
 - Secure login
