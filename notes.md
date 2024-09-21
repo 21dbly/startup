@@ -9,8 +9,8 @@ javascript can interact and modify the DOM
 
 Some tags:
 body, header, footer, main, section, aside, p, table, ol/ul, div, and span
-a href=""
-img src=""
+<br />a href="" alt=""
+<br />img src="" width=
 
 ## to do:
 
