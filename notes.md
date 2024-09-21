@@ -1,9 +1,16 @@
 # Notes
 
+## HTML
+
 Document Object Model represents your page. (DOM)
 HTML defines the content and structure
 css styles it
 javascript can interact and modify the DOM
+
+Some tags:
+body, header, footer, main, section, aside, p, table, ol/ul, div, and span
+a href=""
+img src=""
 
 ## to do:
 
