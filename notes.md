@@ -12,6 +12,10 @@ body, header, footer, main, section, aside, p, table, ol/ul, div, and span
 <br />a href="" alt=""
 <br />img src="" width=
 
+## CSS
+selector (body, p, span, #id, .class, etc)
+
+
 ## to do:
 
 - move simon to my project
