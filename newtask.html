@@ -11,7 +11,6 @@
     <!-- Use header, main, and footer elements to give semantic structure -->
     <header>
       <h1>To Due</h1>
-
       <!-- Navigation elements -->
       <nav>
         <p>User: Iejfoiwjoif</p>
@@ -23,23 +22,25 @@
           <li><a href="newtask.html">New Task</a></li>
         </menu>
       </nav>
-
       <!-- Since we don't have the ability to style we use old style HTML to give some visual formatting -->
       <hr />
     </header>
 
     <main>
-      <h2>To Do</h2>
-      <ul>
-        <li>just a list</li>
-        <li>a list of things to do</li>
-        <li>eventually</li>
-        <li>call grandpa</li>
-        <li>do laundry</li>
-        <li>oh wait actually I need to do that</li>
-        <li>go to sleep</li>
-      </ul>
-      <form action="newtask.html"><button type="submit">Create new task</button></form>
+      <h2>New Task</h2>
+      <form method="get" action="today.html">
+        <div>
+          <input type="text" placeholder="Task" />
+        </div>
+        <div>
+          <textarea>details about the task</textarea>
+        </div>
+        <div>
+          <span>Due: </span><input type="datetime" />
+        </div>
+        <div>Repeating? <input type="checkbox" /></div>
+        <button type="submit">Create</button>
+      </form>
     </main>
 
     <footer>
