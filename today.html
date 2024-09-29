@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Tell browsers not to scale the viewport automatically -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Due (HTML)</title>
+    <!-- <link rel="icon" href="favicon.ico" /> -->
+  </head>
+  <body>
+    <!-- Use header, main, and footer elements to give semantic structure -->
+    <header>
+      <h1>To Due</h1>
+
+      <!-- Navigation elements -->
+      <nav>
+        <!-- Menu will likely be temporary. Buttons will lead to different pages instead -->
+        <menu>
+          <li><a href="index.html">Back to Login</a></li>
+          <li><a href="todo.html">To do</a></li>
+          <li><a href="newtask.html">New Task</a></li>
+        </menu>
+      </nav>
+
+      <!-- Since we don't have the ability to style we use old style HTML to give some visual formatting -->
+      <hr />
+    </header>
+
+    <main>
+      <h3>Mon, May 20</h3>
+      <ul>
+        <li>task one</li>
+        <li>task two <span>12:00pm</span></li>
+        <li>task due! <span>11:59pm</span></li>
+      </ul>
+      <h3>Tues, May 21</h3>
+      <ul>
+        <li>task goes here <span>(time in span)</span></li>
+        <li>some tasks have no time <span></span></li>
+        <li>click on task to see more details <span></span></li>
+      </ul>
+      <form action="newtask.html"><button type="submit">Create new task</button></form>
+    </main>
+
+    <footer>
+      <hr />
+      <span>Made by Donovan Bly</span>
+      <br />
+      <a href="https://github.com/21dbly/startup/tree/main">GitHub</a>
+    </footer>
+  </body>
+</html>
