@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Tell browsers not to scale the viewport automatically -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Due (HTML)</title>
+    <!-- <link rel="icon" href="favicon.ico" /> -->
+  </head>
+  <body>
+    <!-- Use header, main, and footer elements to give semantic structure -->
+    <header>
+      <h1>To Due</h1>
+
+      <!-- Navigation elements -->
+      <nav>
+        <!-- Menu will likely be temporary. Buttons will lead to different pages instead -->
+        <menu>
+          <li><a href="index.html">Login</a></li>
+          <li><a href="today.html">Today</a></li>
+          <li><a href="todo.html">To do</a></li>
+          <li><a href="newtask.html">New Task</a></li>
+        </menu>
+      </nav>
+
+      <!-- Since we don't have the ability to style we use old style HTML to give some visual formatting -->
+      <hr />
+    </header>
+
+    <main>
+      <h2>Login</h2>
+      <form method="get" action="today.html">
+        <div>
+          <span>@</span>
+          <input type="email" placeholder="your@email.com" />
+        </div>
+        <div>
+          <span>🔒</span>
+          <input type="password" placeholder="password" />
+        </div>
+        <button type="submit">Login</button>
+        <button type="submit">Create</button>
+      </form>
+    </main>
+
+    <footer>
+      <hr />
+      <span>Made by Donovan Bly</span>
+      <br />
+      <a href="https://github.com/21dbly/startup/tree/main">GitHub</a>
+    </footer>
+  </body>
+</html>
