@@ -37,3 +37,13 @@ I am going to use the required technologies in the following ways.
   - ability to connect to google calendar using google calendar api
 - **DB/Login** - Store users and tasks in database. Register and login users. Credentials securely stored in database. Can't view/access tasks unless authenticated.
 - **WebSocket** - ability to share a task with another user
+
+## HTML deliverable
+For this deliverable I built out the structure of my application using HTML.
+
+- [x] **HTML pages** - Four HTML pages that represent the ability to login, the dated to-do list ("Today"), and the undated to-do list ("To Do") and also a page for creating a new task, or viewing the details of a task.
+- [x] **Links** - The login page links to the today page from the login button. All the other pages have links to all pages. There is also a button that leads to the create task page.
+- [x] **Text** - The lists are made up of text.
+- [X] **Images** - There is an image on the login page to make it more interesting. I can get a random image from a 3rd party service if I don't find a service that's more applicable.
+- [x] **DB/Login** - Input box and submit button for login and creating a new task. The login info as well as all the lists are stored in a database.
+- [x] **WebSocket** - A list can be editted on a different device and show up in realtime through websockets. I may also add a way to share tasks with others, but I'm not sure about that idea yet, so for now this is enough I think.
