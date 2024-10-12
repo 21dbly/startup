@@ -6,65 +6,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>To Due (HTML)</title>
     <!-- <link rel="icon" href="favicon.ico" /> -->
+    <link rel="stylesheet" href="main.css">
   </head>
   <body>
     <!-- Use header, main, and footer elements to give semantic structure -->
     <header>
-      <h1>To Due</h1>
+        <h1>To Due</h1>
 
       <!-- Navigation elements -->
-      <nav>
-        <p>User: Iejfoiwjoif</p>
-        <!-- Menu will likely be temporary. Buttons will lead to different pages instead -->
-        <menu>
-          <li><a href="index.html">Back to Login</a></li>
-          <li><a href="today.html">Today</a></li>
-          <li><a href="todo.html">To Do</a></li>
-          <li><a href="newtask.html">New Task</a></li>
-        </menu>
-      </nav>
+        <a class="menu" href="index.html">Back to Login</a>
+        <a class="menu" href="today.html">Today</a>
+        <a class="menu" href="todo.html">To Do</a>
+        <a class="menu" href="newtask.html">New Task</a>
 
-      <!-- Since we don't have the ability to style we use old style HTML to give some visual formatting -->
-      <hr />
+        <p id="user">User: Iejfoiwjoif</p>
+
     </header>
 
-    <section id="today">
-      <h2>Today</h2>
-      <h3>Mon, May 20</h3>
-      <ul>
-        <li>task one</li>
-        <li>task two <span>12:00pm</span></li>
-        <li>task due! <span>11:59pm</span></li>
-      </ul>
-      <h3>Tues, May 21</h3>
-      <ul>
-        <li>task goes here <span>(time in span)</span></li>
-        <li>some tasks have no time <span></span></li>
-        <li>click on task to see more details <span></span></li>
-      </ul>
-      <form action="newtask.html"><button type="submit">Create new task</button></form>
-    </section>
-
-    <section id="todo">
-        <h2>To Do</h2>
-        <ul>
-            <li>just a list</li>
-            <li>a list of things to do</li>
-            <li>eventually</li>
-            <li>call grandpa</li>
-            <li>do laundry</li>
-            <li>oh wait actually I need to do that</li>
-            <li>go to sleep</li>
-            <li>by the way these lists will be stored in a database</li>
-            <li>and they'll be updated in real time from different devices using websockets</li>
-        </ul>
-        <form action="newtask.html"><button type="submit">Create new task</button></form>
-    </section>
-
+    <main>
+        <section id="today" class="list">
+            <h2>Today</h2>
+            <h3>Mon, May 20</h3>
+            <ul>
+                <li>task one</li>
+                <li>task two <span>12:00pm</span></li>
+                <li>task due! <span>11:59pm</span></li>
+            </ul>
+            <h3>Tues, May 21</h3>
+            <ul>
+                <li>task goes here <span>(time in span)</span></li>
+                <li>some tasks have no time <span></span></li>
+                <li>click on task to see more details <span></span></li>
+            </ul>
+            <form action="newtask.html"><button type="submit">Create new task</button></form>
+        </section>
+        
+        <section id="todo" class="list">
+            <h2>To Do</h2>
+            <ul>
+                <li>just a list</li>
+                <li>a list of things to do</li>
+                <li>eventually</li>
+                <li>call grandpa</li>
+                <li>do laundry</li>
+                <li>go to sleep</li>
+                <li>by the way these lists will be stored in a database</li>
+                <li>and they'll be updated in real time from different devices using websockets</li>
+            </ul>
+            <form action="newtask.html"><button type="submit">Create new task</button></form>
+        </section>
+    </main>
+        
     <footer>
-      <hr />
       <span>Made by Donovan Bly</span>
-      <br />
       <a href="https://github.com/21dbly/startup/tree/main">GitHub</a>
     </footer>
   </body>
