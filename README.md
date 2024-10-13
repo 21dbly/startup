@@ -47,3 +47,13 @@ For this deliverable I built out the structure of my application using HTML.
 - [X] **Images** - There is an image on the login page to make it more interesting. I can get a random image from a 3rd party service if I don't find a service that's more applicable.
 - [x] **DB/Login** - Input box and submit button for login and creating a new task. The login info as well as all the lists are stored in a database.
 - [x] **WebSocket** - A list can be editted on a different device and show up in realtime through websockets. I may also add a way to share tasks with others, but I'm not sure about that idea yet, so for now this is enough I think.
+
+## CSS deliverable
+For this deliverable I properly styled the application into its current appearance.
+
+- [x] **Header, footer, and main content body** - Yep, I've got those and they work well.
+- [x] **Navigation elements** - The menu links in the top are white to look better with the background, and they are responsive to resizing.
+- [x] **Responsive to window resizing** - My website looks great on all window sizes and devices. The menu items shorten to only the necessary parts when the window is thinner, and the main to-do list section only shows one side when the window is small. Once I add javascript I will find a way to switch between which side of the to-do list is visible.
+- [x] **Application elements** - The website looks good and has to-do lists. It also has buttons in headers to create new tasks, and the buttons only appear when you hover over the heading.
+- [x] **Application text content** - Consistent and simple font and color scheme throughout the website.
+- [X] **Application images** - Styled the image.
