@@ -6,39 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>To Due (CSS)</title>
     <!-- <link rel="icon" href="favicon.ico" /> -->
+    <link rel="stylesheet" href="newtask.css">
   </head>
   <body>
     <!-- Use header, main, and footer elements to give semantic structure -->
     <header>
       <h1>To Due</h1>
-      <!-- Navigation elements -->
-      <nav>
-        <p>User: Iejfoiwjoif</p>
-        <!-- Menu will likely be temporary. Buttons will lead to different pages instead -->
-        <menu>
-          <li><a href="index.html">Back to Login</a></li>
-          <li><a href="today.html">Today</a></li>
-          <li><a href="todo.html">To Do</a></li>
-          <li><a href="newtask.html">New Task</a></li>
-        </menu>
-      </nav>
-    </header>
+
+    <!-- Navigation elements -->
+      <a class="menu" href="index.html">Back to Login</a>
+      <a class="menu" href="newtask.html">New Task</a>
+
+      <p class="menu" id="user">User: Iejfoiwjoif</p>
+
+      <a class="small-menu" href="index.html"> Login </a>
+      <a class="small-menu" href="newtask.html"> New </a>
+      <p class="small-menu"> Iejfoiwjoif </p>
+
+  </header>
 
     <main>
-      <h2>New Task</h2>
-      <form method="get" action="today.html">
-        <div>
-          <input type="text" placeholder="Task" />
-        </div>
-        <div>
-          <textarea>details about the task</textarea>
-        </div>
-        <div>
-          <span>Due: </span><input type="datetime" />
-        </div>
-        <div>Repeating? <input type="checkbox" /></div>
-        <button type="submit">Create</button>
-      </form>
+      <div id="box">
+        <h2>New Task</h2>
+        <form id="task-form" method="get" action="main.html">
+          <div>
+            <span>Task name: </span><input type="text" placeholder="Task" />
+          </div>
+          <div>
+            <span>Details: </span>
+            <textarea placeholder="details about the task"></textarea>
+          </div>
+          <div>
+            <span>Due Date: </span><input type="datetime" />
+          </div>
+          <div>Repeating? <input type="checkbox" /></div>
+          <button type="submit">Create</button>
+        </form>
+      </div>
     </main>
 
     <footer>
