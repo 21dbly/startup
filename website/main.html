@@ -15,34 +15,47 @@
 
       <!-- Navigation elements -->
         <a class="menu" href="index.html">Back to Login</a>
-        <a class="menu" href="today.html">Today</a>
-        <a class="menu" href="todo.html">To Do</a>
         <a class="menu" href="newtask.html">New Task</a>
 
-        <p id="user">User: Iejfoiwjoif</p>
+        <p class="menu" id="user">User: Iejfoiwjoif</p>
+
+        <a class="small-menu" href="index.html"> Login </a>
+        <a class="small-menu" href="newtask.html"> New </a>
+        <p class="small-menu"> Iejfoiwjoif </p>
 
     </header>
 
     <main>
         <section id="today" class="list">
-            <h2>Today</h2>
-            <h3>Mon, May 20</h3>
+            <h2 class="can-add">
+              Today
+              <form action="newtask.html" class="add-button"><button type="submit">+</button></form>
+            </h2>
+            <h3 class="can-add">
+              Mon, May 20
+              <form action="newtask.html" class="add-button"><button type="submit">+</button></form>
+            </h3>
             <ul>
                 <li>task one</li>
                 <li>task two <span>12:00pm</span></li>
                 <li>task due! <span>11:59pm</span></li>
             </ul>
-            <h3>Tues, May 21</h3>
+            <h3 class="can-add">
+              Tues, May 21
+              <form action="newtask.html" class="add-button"><button type="submit">+</button></form>
+            </h3>
             <ul>
                 <li>task goes here <span>(time in span)</span></li>
                 <li>some tasks have no time <span></span></li>
                 <li>click on task to see more details <span></span></li>
             </ul>
-            <form action="newtask.html"><button type="submit">Create new task</button></form>
         </section>
         
         <section id="todo" class="list">
-            <h2>To Do</h2>
+            <h2 class="can-add">
+              To Do
+              <form action="newtask.html" class="add-button"><button type="submit">+</button></form>
+            </h2>
             <ul>
                 <li>just a list</li>
                 <li>a list of things to do</li>
@@ -53,7 +66,6 @@
                 <li>by the way these lists will be stored in a database</li>
                 <li>and they'll be updated in real time from different devices using websockets</li>
             </ul>
-            <form action="newtask.html"><button type="submit">Create new task</button></form>
         </section>
     </main>
         

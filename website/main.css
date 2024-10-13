@@ -8,7 +8,7 @@ body {
 }
 
 header {
-    flex: 0 50px;
+    flex: 0 30px;
     background: #253F8C;
     color: white;
     display: flex;
@@ -21,7 +21,7 @@ header * {
     color: white;
 }
 
-@media (max-width: 600px) {
+/* @media (max-width: 600px) {
     header .menu {
         display: none;
     }
@@ -29,18 +29,14 @@ header * {
         justify-content: space-between;
         padding-right: 20px;
     }
-}
+} */
 
 main {
     display: flex;
     flex-direction: row;
-    margin: 10px 5px;
+    margin: 10px 0px;
     justify-content: space-evenly;
     flex: 1;
-}
-
-#today {
-    background: #a9a9a9;
 }
 
 .list {
@@ -54,7 +50,7 @@ main {
     padding: 0 10px;
     border-radius: 5px;
     /* flex: 0 0 300px; */
-    margin: 0 5px;
+    margin: 0 0px;
 }
 
 footer {
@@ -69,4 +65,62 @@ footer * {
     padding:10px;
     font-size: small;
     color:white;
+}
+
+.add-button {
+    display: inline;
+    display: none;
+    margin: 0 20px;
+}
+
+.add-button button {
+    font-size: large;
+    font-weight: bold;
+    color: white;
+    background: #253F8C;
+    border: solid, 0;
+    border-radius: 3px;
+}
+
+/* .add-button button:hover {
+} */
+
+.can-add:hover .add-button {
+    display: inline;
+}
+
+/* .can-add {
+    display: flex;
+    align-items: center;
+} */
+
+.small-menu {
+    display: none;
+}
+
+@media (max-width: 450px){
+    #todo {
+        display: none;
+    }
+    #today {
+        width: 80%
+    }
+}
+
+@media (max-width: 500px) {
+    .small-menu {
+        display: block;
+    }
+    .menu {
+        display: none;
+    }
+}
+
+@media (max-width: 350px) {
+    header h1 {
+        display: none;
+    }
+    header {
+        justify-content: space-evenly;
+    }
 }
