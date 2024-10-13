@@ -4,21 +4,19 @@
     <meta charset="UTF-8" />
     <!-- Tell browsers not to scale the viewport automatically -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>To Due (HTML)</title>
+    <title>To Due (CSS)</title>
     <!-- <link rel="icon" href="favicon.ico" /> -->
+    <link rel="stylesheet" href="login.css">
   </head>
   <body>
-    <!-- Use header, main, and footer elements to give semantic structure -->
     <header>
       <h1>To Due</h1>
-      <!-- Since we don't have the ability to style we use old style HTML to give some visual formatting -->
       <p>(must login to access to-do list)</p>
-      <hr />
     </header>
 
     <main>
       <h2>Login</h2>
-      <form method="get" action="today.html">
+      <form id="login-form" method="get" action="main.html">
         <div>
           <span>@</span>
           <input type="email" placeholder="your@email.com" />
@@ -27,20 +25,17 @@
           <span>🔒</span>
           <input type="password" placeholder="password" />
         </div>
-        <button type="submit">Login</button>
-        <button type="submit">Create</button>
+        <div>
+          <button type="submit">Login</button>
+          <button type="submit">Create</button>
+        </div>
       </form>
 
-    <br />
-    <img src="https://images.pexels.com/photos/1955134/pexels-photo-1955134.jpeg" width="200" />
-    <br />
-    <label>maybe I'll get a picture from a service and put it here</label>
+    <img src="https://images.pexels.com/photos/1955134/pexels-photo-1955134.jpeg" width="250" />
     </main>
 
     <footer>
-      <hr />
       <span>Made by Donovan Bly</span>
-      <br />
       <a href="https://github.com/21dbly/startup/tree/main">GitHub</a>
     </footer>
   </body>

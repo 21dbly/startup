@@ -21,22 +21,43 @@ header * {
     color: white;
 }
 
+h2 {
+    margin: 0;
+}
+
 main {
     display: flex;
-    flex-direction: row;
-    margin: 10px 0px;
-    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+    /* margin: 10px 0px; */
+    justify-content: center;
     flex: 1;
 }
 
-.list {
-    background: #a9a9a9;
-    width: 40%;
-    border: 2px solid black;
-    padding: 0 10px;
-    border-radius: 5px;
-    margin: 0 0px;
+main > * {
+    padding: 10px;
 }
+
+#login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#login-form > *{
+    padding: 2px;
+}
+
+#login-form :nth-child(3) {
+    margin-top: 10px;
+}
+
+img {
+    max-width: 100%;
+    /* min-width: 40%; */
+    height: auto;
+}
+
 
 footer {
     flex: 0 20px;
@@ -52,13 +73,8 @@ footer * {
     color:white;
 }
 
-.add-button {
-    display: inline;
-    display: none;
-    margin: 0 20px;
-}
 
-.add-button button {
+button {
     font-size: large;
     font-weight: bold;
     color: white;
@@ -67,36 +83,7 @@ footer * {
     border-radius: 3px;
 }
 
-/* .add-button button:hover {
-} */
-
-.can-add:hover .add-button {
-    display: inline;
-}
-
-.small-menu {
-    display: none;
-}
-
-@media (max-width: 450px){
-    #todo {
-        display: none;
-    }
-    #today {
-        width: 80%
-    }
-}
-
-@media (max-width: 500px) {
-    .small-menu {
-        display: block;
-    }
-    .menu {
-        display: none;
-    }
-}
-
-@media (max-width: 350px) {
+@media (max-width: 400px) {
     header h1 {
         display: none;
     }
