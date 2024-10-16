@@ -25,8 +25,5 @@ iterating: `in` means index/keys, `of` means value
 
 JSON is like objects, but only strings. JSON.stringify(obj) and JSON.parse(obj_jason)
 
-
-## to do:
-
-- move simon to my project
-- move my project to ubuntu
+### Promises
+new Promise((resolve, reject) => resolve(true))
