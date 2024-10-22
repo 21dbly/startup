@@ -168,5 +168,9 @@ const objRegex = new RegExp('ab*', 'i');
 const literalRegex = /ab*/i;
 i means ignore case
 
+## React
+Shaodw DOM: creates a virtual copy of the DOM that is faster. Figures out any changes and updates the real DOM.
+components can be class style or function syle. Function style are constant functions that return valid html.
+
 ### Promises
 new Promise((resolve, reject) => resolve(true))
