@@ -174,3 +174,9 @@ components can be class style or function syle. Function style are constant func
 
 ### Promises
 new Promise((resolve, reject) => resolve(true))
+
+# Internet
+Local use addresses: 10., 192.168
+DHCP (Dynamic Host Configuration Protocol) assigns IP addresses to devices on a network
+
+
