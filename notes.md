@@ -179,4 +179,8 @@ new Promise((resolve, reject) => resolve(true))
 Local use addresses: 10., 192.168
 DHCP (Dynamic Host Configuration Protocol) assigns IP addresses to devices on a network
 
+# HTTP Requests:
 
+endpoint: the functions defined in Express. (the API?)
+middleware: things that happen in before sending back an http request?
+Express: to organize your middleware
