@@ -2,6 +2,12 @@ import React from 'react';
 import './login.css';
 
 export function Login() {
+  const [imageUrl, setImageUrl] = React.useState('');
+
+  React.useEffect(() => {
+    setImageUrl('https://images.pexels.com/photos/1955134/pexels-photo-1955134.jpeg');
+  }, [])
+
   return (
     <main>
       <h2>Login</h2>
@@ -20,7 +26,7 @@ export function Login() {
         </div>
       </form>
 
-      <img src="https://images.pexels.com/photos/1955134/pexels-photo-1955134.jpeg" width="250" />
+      <img src={imageUrl} alt='random landscape image' width="250" />
     </main>
   );
 }
