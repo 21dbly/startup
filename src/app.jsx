@@ -10,7 +10,7 @@ export default function App() {
         <BrowserRouter>
             <div className='body'>
                 <header>
-                <h1>To Due</h1>
+                <h1>DoDue</h1>
                 <NavLink className="menu" to="">Back to Login</NavLink>
                 <NavLink className="menu" to="lists">List View</NavLink>
                 <NavLink className="menu" to="newtask">New Task</NavLink>

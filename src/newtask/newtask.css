@@ -1,0 +1,39 @@
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+#box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background: #a9a9a9;
+    border: 2px solid black;
+    padding: 30px;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+#task-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#task-form > * {
+    margin: 2px;
+}
+
+#task-form div:nth-child(2) {
+    display: flex;
+}
+
+textarea {
+    height: 50px;
+}
