@@ -6,7 +6,7 @@ export function Newtask() {
     <main>
       <div id="box">
         <h2>New Task</h2>
-        <form id="task-form" method="get" action="main.html">
+        <form id="task-form" method="get" action="lists">
           <div>
             <span>Task name: </span><input type="text" placeholder="Task" />
           </div>

@@ -25,6 +25,10 @@ main > * {
     margin-top: 10px;
 }
 
+#login-buttons button {
+    margin: 0 5px;
+}
+
 img {
     max-width: 100%;
     /* min-width: 40%; */

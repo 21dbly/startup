@@ -5,15 +5,15 @@ import './lists.css'
 // specifically main {flex-direction: column} is the problem
 export function Lists() {
   return (
-    <main>
+    <main id="lists-main">
         <section id="today" className="list">
             <h2 className="can-add">
               Today
-              <form action="newtask.html" className="add-button"><button type="submit">+</button></form>
+              <form action="/newtask" className="add-button"><button type="submit">+</button></form>
             </h2>
             <h3 className="can-add">
               Mon, May 20
-              <form action="newtask.html" className="add-button"><button type="submit">+</button></form>
+              <form action="/newtask" className="add-button"><button type="submit">+</button></form>
             </h3>
             <ul>
                 <li>task one</li>
@@ -22,7 +22,7 @@ export function Lists() {
             </ul>
             <h3 className="can-add">
               Tues, May 21
-              <form action="newtask.html" className="add-button"><button type="submit">+</button></form>
+              <form action="/newtask" className="add-button"><button type="submit">+</button></form>
             </h3>
             <ul>
                 <li>task goes here <span>(time in span)</span></li>
@@ -34,7 +34,7 @@ export function Lists() {
         <section id="todo" className="list">
             <h2 className="can-add">
               To Do
-              <form action="newtask.html" className="add-button"><button type="submit">+</button></form>
+              <form action="/newtask" className="add-button"><button type="submit">+</button></form>
             </h2>
             <ul>
                 <li>just a list</li>

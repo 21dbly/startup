@@ -14,7 +14,7 @@ export function Login() {
           <span>🔒</span>
           <input type="password" placeholder="password" />
         </div>
-        <div>
+        <div id="login-buttons">
           <button type="submit">Login</button>
           <button type="submit">Create</button>
         </div>
