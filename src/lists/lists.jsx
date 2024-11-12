@@ -1,8 +1,7 @@
 import React from 'react';
 import './lists.css'
 
-// lists is somehow getting some css from newtask.css
-// specifically main {flex-direction: column} is the problem
+
 export function Lists() {
   return (
     <main id="lists-main">

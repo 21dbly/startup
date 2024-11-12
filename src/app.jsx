@@ -1,38 +1,53 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './app.css';
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Login } from './login/login';
 import { Lists } from './lists/lists';
 import { Newtask } from './newtask/newtask';
+// import { useNavigate } from 'react-router-dom';
 
 export default function App() {
-    const [authState, setAuthState] = React.useState();
-    const [userName, setUserName] = React.useState();
+    const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
+    const [isAuthorized, setIsAuthorized] = React.useState(false);
+    if (userName && !isAuthorized) setIsAuthorized(true);
+    // const navigate = useNavigate();
+    // I want to make it so it redirects to login if ever someone is not logged in.
+
+    function LoginWithAuthInfo() {
+        return(
+        <Login 
+            userName={userName}
+            isAuthorized={isAuthorized}
+            onAuthChange={(userName, new_auth) => {
+                setIsAuthorized(new_auth);
+                setUserName(userName);
+            }}/>)
+    }
 
     return (
         <BrowserRouter>
             <div className='body'>
                 <header>
                     <h1>DoDue</h1>
-                    <NavLink className="menu" to="">Back to Login</NavLink>
-                    <NavLink className="menu" to="lists">List View</NavLink>
-                    <NavLink className="menu" to="newtask">New Task</NavLink>
-                    <p className="menu" id="user">User: Iejfoiwjoif</p>
+                    <p>{isAuthorized ? "authorized" : "not"}</p>
+                    {isAuthorized &&
+                        (<><NavLink className="menu" to="">Back to Login</NavLink>
+                        <NavLink className="menu" to="lists">List View</NavLink>
+                        <NavLink className="menu" to="newtask">New Task</NavLink>
+                        <p className="menu" id="user">User: {userName}</p></>) }
+
                     {/* <a className="small-menu" href="login.html"> Login </a>
                     <a className="small-menu" href="newtask.html"> New </a>
                     <p className="small-menu"> Iejfoiwjoif </p> */}
                 </header>
 
                 <Routes>
-                    <Route path='/' element={<Login 
-                        userName={userName}
-                        authState={authState}
-                        onAuthChange={(userName, authState) => {
-                            setAuthState(authState);
-                            setUserName(userName);
-                        }}/>} exact />
-                    <Route path='/lists' element={<Lists />} />
-                    <Route path='/newtask' element={<Newtask />} />
+                    <Route path='/' element={LoginWithAuthInfo()} exact />
+
+                    <Route path='/lists' element={<Lists userName={userName}/>} />
+
+                    <Route path='/newtask' element={<Newtask userName={userName}/>} />
+                    
                     <Route path='*' element={<NotFound />} />
                 </Routes>
 
