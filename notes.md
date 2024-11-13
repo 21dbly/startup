@@ -184,3 +184,6 @@ DHCP (Dynamic Host Configuration Protocol) assigns IP addresses to devices on a 
 endpoint: the functions defined in Express. (the API?)
 middleware: things that happen in before sending back an http request?
 Express: to organize your middleware
+
+## Daemons--PM2
+kepps your node service running
