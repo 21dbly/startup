@@ -1,34 +1,13 @@
 import React from 'react';
 import './lists.css'
+import {DatedList} from './datedList.jsx';
 
 
 export function Lists() {
+
   return (
     <main id="lists-main">
-        <section id="today" className="list">
-            <h2 className="can-add">
-              Today
-              <form action="/newtask" className="add-button"><button type="submit">+</button></form>
-            </h2>
-            <h3 className="can-add">
-              Mon, May 20
-              <form action="/newtask" className="add-button"><button type="submit">+</button></form>
-            </h3>
-            <ul>
-                <li>task one</li>
-                <li>task two <span>12:00pm</span></li>
-                <li>task due! <span>11:59pm</span></li>
-            </ul>
-            <h3 className="can-add">
-              Tues, May 21
-              <form action="/newtask" className="add-button"><button type="submit">+</button></form>
-            </h3>
-            <ul>
-                <li>task goes here <span>(time in span)</span></li>
-                <li>some tasks have no time <span></span></li>
-                <li>click on task to see more details <span></span></li>
-            </ul>
-        </section>
+        <DatedList />
         
         <section id="todo" className="list">
             <h2 className="can-add">

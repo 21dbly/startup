@@ -7,6 +7,10 @@
     align-items: normal;
 }
 
+h2, h3 {
+    margin: 10px;
+}
+
 .list {
     background: #a9a9a9;
     width: 40%;
