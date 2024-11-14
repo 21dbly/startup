@@ -39,7 +39,7 @@ export function DatedList() {
             <h2 className="can-add" key="0">
                 Today
                 <form action="/newtask" className="add-button"><button type="submit">+</button></form>
-                {/* change form to onClick and make it its own component*/}
+                {/* change form to onClick and make button its own component*/}
             </h2>
             {datedTable}
         </section>
