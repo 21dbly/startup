@@ -187,3 +187,9 @@ Express: to organize your middleware
 
 ## Daemons--PM2
 kepps your node service running
+
+# Databases
+Use uuid to get unique identifiers
+bcrypt is a hashing function you can use:
+  await bcrypt.hash(password, 10)
+  (number is how gobbled and time consuming you want it)
