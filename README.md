@@ -60,8 +60,11 @@ For this deliverable I properly styled the application into its current appearan
 
 ## Things to be added
 - [] task deleting
-- [] id's for each task (uuid?)
+- [X] id's for each task (uuid?)
 - [] task editing
+Reorganization:
+  - [X] make add-task button a component
+  - [] include labels in newtask form? (for accessability and stuff)
 
 - [] make tasks look nicer (css)
 - [] ability to check off tasks instead of just deleting

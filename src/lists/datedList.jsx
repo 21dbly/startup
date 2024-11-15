@@ -1,7 +1,11 @@
 import React from 'react';
+import { NewTaskButton } from './newTaskButton';
 
 export function DatedList() {
     const [datedList, setDatedList] = React.useState([])
+
+    const today = new Date();
+    const today_YMD = `${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`;
 
     // Demonstrates calling a service asynchronously so that
     // React can properly update state objects with the results.
@@ -18,7 +22,7 @@ export function DatedList() {
     }, []);
 
     if (datedList.length === 0) {
-        return <BlankList />;
+        return <BlankList today={today_YMD} />;
     }
 
     const datedTable = [];
@@ -38,7 +42,8 @@ export function DatedList() {
         <section id="today" className="list">
             <h2 className="can-add" key="0">
                 Today
-                <form action="/newtask" className="add-button"><button type="submit">+</button></form>
+                <NewTaskButton date={today_YMD} />
+                {/* <form action="/newtask" className="add-button"><button type="submit">+</button></form> */}
                 {/* change form to onClick and make button its own component*/}
             </h2>
             {datedTable}
@@ -47,12 +52,13 @@ export function DatedList() {
 
 }
 
-function BlankList() {
+function BlankList( {today} ) {
     return (
     <section id="today" className="list">
         <h2 className="can-add">
             Today
-            <form action="/newtask" className="add-button"><button type="submit">+</button></form>
+            <NewTaskButton date={today} />
+            {/* <form action="/newtask" className="add-button"><button type="submit">+</button></form> */}
             {/* change form to onClick and make it its own component*/}
         </h2>
         <p>Nothing to do, add a new task!</p>
@@ -65,11 +71,12 @@ function SingleDateList({ date, list}) {
     <div>
     <h3 className="can-add">
         {date}
-        <form action="/newtask" className="add-button"><button type="submit">+</button></form>
+        <NewTaskButton date={date} />
+        {/* <form action="/newtask" className="add-button"><button type="submit">+</button></form> */}
     </h3>
     <ul>
         {list.map((item, index) => (
-            <li key={item.key}>
+            <li key={item.id}>
                 <span className='task-title'>{item.title}</span>{" - "}
                 <span className='task-details'>{item.details}</span>{" - "}
                 <span className='task-time'>{item.time}</span>

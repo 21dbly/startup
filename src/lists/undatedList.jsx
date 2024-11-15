@@ -1,4 +1,5 @@
 import React from 'react';
+import { NewTaskButton } from './newTaskButton';
 
 export function UndatedList() {
     const [undatedList, setUndatedList] = React.useState([])
@@ -22,7 +23,7 @@ export function UndatedList() {
     const undatedTable = [];
     for (let task of undatedList) {
         undatedTable.push(
-            <li key={task.key}>
+            <li key={task.id}>
                 <span className='task-title'>{task.title}</span>{" - "}
                 <span className='task-details'>{task.details}</span>
             </li>
@@ -33,7 +34,8 @@ export function UndatedList() {
         <section id="todo" className="list">
             <h2 className="can-add" key="0">
                 To Do
-                <form action="/newtask" className="add-button"><button type="submit">+</button></form>
+                <NewTaskButton />
+                {/* <form action="/newtask" className="add-button"><button type="submit">+</button></form> */}
                 {/* change form to onClick and make it its own component*/}
             </h2>
             {undatedTable}

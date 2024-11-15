@@ -1,23 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import './newtask.css';
+import { v4 as uuid } from 'uuid';
+import { useLocation } from 'react-router-dom';
 
 //default values
 const TITLE = "Untitled";
 
 export function Newtask() {
+  const location = useLocation()
+  const date_clicked = location.state?.date_clicked || "";
+
   const [title, setTitle] = useState(TITLE);
   const [details, setDetails] = useState("");
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState(date_clicked);
   const [time, setTime] = useState("");
 
   function submit() {
     if (date) {
       let list = JSON.parse(localStorage.getItem('datedList')) || [];
-      insert_in_order(list, {title: title, details: details, date: date, time: time});
+      insert_in_order(list, {id: uuid(), title: title, details: details, date: date, time: time});
       localStorage.setItem('datedList', JSON.stringify(list));
     } else {
       let list = JSON.parse(localStorage.getItem('undatedList')) || [];
-      list.push({title: title, details: details});
+      list.push({id: uuid(), title: title, details: details});
       localStorage.setItem('undatedList', JSON.stringify(list)) ;
     }
   }
@@ -37,7 +42,7 @@ export function Newtask() {
             onChange={(e) => setDetails(e.target.value || "")} />
           </div>
           <div>
-            <span>Due Date - {date}: </span><input type="date" 
+            <span>Due Date: </span><input type="date" value={date_clicked}
             onChange={(e) => setDate(e.target.value || "")} />
             <span>Time: </span><input type="time" 
             onChange={(e) => setTime(e.target.value || "")} />
