@@ -57,3 +57,14 @@ For this deliverable I properly styled the application into its current appearan
 - [x] **Application elements** - The website looks good and has to-do lists. It also has buttons in headers to create new tasks, and the buttons only appear when you hover over the heading.
 - [x] **Application text content** - Consistent and simple font and color scheme throughout the website.
 - [X] **Application images** - Styled the image.
+
+## Things to be added
+- [] task deleting
+- [] id's for each task (uuid?)
+- [] task editing
+
+- [] make tasks look nicer (css)
+- [] ability to check off tasks instead of just deleting
+- [] ability to move tasks by dragging
+- [] repeating tasks
+- [] due date vs do date
