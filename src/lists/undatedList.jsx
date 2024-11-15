@@ -1,18 +1,18 @@
 import React from 'react';
 
 export function UndatedList() {
-    const [undatedList, setDatedList] = React.useState([])
+    const [undatedList, setUndatedList] = React.useState([])
 
     // Demonstrates calling a service asynchronously so that
     // React can properly update state objects with the results.
     React.useEffect(() => {
         const undatedListJSON = localStorage.getItem('undatedList');
         if (undatedListJSON) {
-            setDatedList(JSON.parse(undatedListJSON));
+            setUndatedList(JSON.parse(undatedListJSON));
         }
-        setDatedList([{title:'Do something', details:'just do it', key:'1'},
-            {title:'Make a video game', details:"fantasy 2d storybased somewhat systematic roguelike", key:'2'}
-        ]);
+        // setUndatedList([{title:'Do something', details:'just do it', key:'1'},
+        //     {title:'Make a video game', details:"fantasy 2d storybased somewhat systematic roguelike", key:'2'}
+        // ]);
     }, []);
 
     if (undatedList.length === 0) {
@@ -23,16 +23,16 @@ export function UndatedList() {
     for (let task of undatedList) {
         undatedTable.push(
             <li key={task.key}>
-                <span className='task-title'>{task.title}</span>{"-"}
-                <span className='task-details'>{task.details}</span>{"-"}
+                <span className='task-title'>{task.title}</span>{" - "}
+                <span className='task-details'>{task.details}</span>
             </li>
         );
     }
 
     return (
-        <section id="today" className="list">
+        <section id="todo" className="list">
             <h2 className="can-add" key="0">
-                Today
+                To Do
                 <form action="/newtask" className="add-button"><button type="submit">+</button></form>
                 {/* change form to onClick and make it its own component*/}
             </h2>

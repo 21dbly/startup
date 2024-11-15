@@ -10,11 +10,11 @@ export function DatedList() {
         if (datedListJSON) {
             setDatedList(JSON.parse(datedListJSON));
         }
-        setDatedList([{date:'11/12/2024', title:'Do Dishes', details:'just do them', time:'10:00pm', key:'dishes'},
-            {date:'11/12/2024', title:'Do dishes again', time:"5:00pm", key:'3'},
-            {date:'11/13/2024', title:'Do dishes again', time:"5:00pm", key:'2'},
-            {date:'11/13/2024', title:'Do dishes again', time:"5:00pm", key:'4'}
-        ]);
+        // setDatedList([{date:'11/12/2024', title:'Do Dishes', details:'just do them', time:'10:00pm', key:'dishes'},
+        //     {date:'11/12/2024', title:'Do dishes again', time:"5:00pm", key:'3'},
+        //     {date:'11/13/2024', title:'Do dishes again', time:"5:00pm", key:'2'},
+        //     {date:'11/13/2024', title:'Do dishes again', time:"5:00pm", key:'4'}
+        // ]);
     }, []);
 
     if (datedList.length === 0) {
@@ -70,8 +70,8 @@ function SingleDateList({ date, list}) {
     <ul>
         {list.map((item, index) => (
             <li key={item.key}>
-                <span className='task-title'>{item.title}</span>{"-"}
-                <span className='task-details'>{item.details}</span>{"-"}
+                <span className='task-title'>{item.title}</span>{" - "}
+                <span className='task-details'>{item.details}</span>{" - "}
                 <span className='task-time'>{item.time}</span>
             </li>
         ))}
