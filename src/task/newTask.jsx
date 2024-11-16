@@ -44,7 +44,7 @@ export function NewTask() {
             onChange={(e) => setDetails(e.target.value || "")} />
           </div>
           <div>
-            <span>Due Date: </span><input type="date" value={date_clicked}
+            <span>Due Date: </span><input type="date" value={date}
             onChange={(e) => setDate(e.target.value || "")} />
             <span>Time: </span><input type="time" 
             onChange={(e) => setTime(e.target.value || "")} />
