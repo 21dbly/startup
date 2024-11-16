@@ -58,20 +58,36 @@ For this deliverable I properly styled the application into its current appearan
 - [x] **Application text content** - Consistent and simple font and color scheme throughout the website.
 - [X] **Application images** - Styled the image.
 
-## Things to be added
+## React deliverable
+For this deliverable I used JavaScript and React so that the application works for a single user. I also added placeholders for future technology.
+
+- [x] **Bundled and transpiled** - done finally!
+- [x] **Components** - Login, Lists, UndatedList, DatedList, EditTask, NewTask, NewTaskButton, Task, and more are all working components.
+  - [x] **login** - This one is a little wonky right now but I think it works the same as the startup react. It's just weird without databases. The important part is it logs you in when you enter a username and denies you access without that.
+  - [x] **database** - Both lists and the username are stored in localStorage in preparation for storing them in a database.
+  - [x] **WebSocket** - I will use websockets to update the lists automatically if a list or task was changed on a different device.
+  - [x] **application logic** - I worked hard to make it possible to add tasks to lists and then edit or delete those tasks. Tasks can be edited by clicking on them. The dated task is sorted and grouped by dates. Adding or removing the date by editing it will cause the task to switch to the other list. Changing the date will cause it to reorder itself.
+- [x] **Router** - Routing between login, list view, newTask, and editTask components.
+- [x] **Hooks** - I used `UseState` to track changes in task data while editing or creating. I also used useEffect to retrieve the list data from LocalStorage.
+
+
+
+## Things to be added in the future
 - [X] task deleting
 - [X] id's for each task (uuid?)
 - [X] task editing
+      
 Reorganization:
   - [X] make add-task button a component
-  - [] include labels in newtask form? (for accessability and stuff)
+  - [ ] include labels in newtask form? (for accessability and stuff)  
+  
 
-- [] make tasks look nicer (css)
-- [] reformat dates and times to be better (Mon, Oct 1 or something)
-- [] make it nicer for phones (at least make it possible to see the other list)
-- [] ability to check off tasks instead of just deleting
-- [] ability to move tasks by dragging
-- [] repeating tasks
-- [] due date vs do date
-- [] rerouting to login when not logged in
-- [] figure out how url query things work so I can include the id in the url for editing tasks
+- [ ] make tasks look nicer (css)
+- [ ] reformat dates and times to be better (Mon, Oct 1 or something)
+- [ ] make it nicer for phones (at least make it possible to see the other list)
+- [ ] ability to check off tasks instead of just deleting
+- [ ] ability to move tasks by dragging
+- [ ] repeating tasks
+- [ ] due date vs do date
+- [ ] rerouting to login when not logged in
+- [ ] figure out how url query things work so I can include the id in the url for editing tasks
