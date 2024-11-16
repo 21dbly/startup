@@ -63,7 +63,7 @@ export function NewTask() {
 function insert_in_order(list, task) {
   for (let i in list) {
     let t = list[i];
-    if ((t.date == task.date && t.time > task.time) || t.date > task.date) {
+    if ((t.date === task.date && t.time > task.time) || t.date > task.date) {
       list.splice(i, 0, task);
       return;
     }

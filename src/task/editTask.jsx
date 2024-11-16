@@ -16,7 +16,7 @@ export function EditTask() {
     // make error message
     return (<main>ERROR! no list</main>);
   }
-  const task = list.find((t) => (t.id == id));
+  const task = list.find((t) => (t.id === id));
   if (!task) {
     // make error message
     return (<main>ERROR! no task with that id</main>);
@@ -33,26 +33,26 @@ export function EditTask() {
     const new_list_type = date ? "datedList" : "undatedList";
     const old_list = JSON.parse(localStorage.getItem(start_list_type)) || [];
 
-    if (date == og_date) {
-      const task_index = old_list.findIndex((t) => (t.id == id));
+    if (date === og_date) {
+      const task_index = old_list.findIndex((t) => (t.id === id));
       if (task_index < 0) {
         console.log("the task you're looking for disappeared");
         return(<p>will this error show? idk but the task you're looking for disappeared</p>);
       }
-      old_list[task_index] = {id: id, title: title, details: details, date: date, time: time};
+      old_list[task_index] = {id: id, title: title || TITLE, details: details, date: date, time: time};
       localStorage.setItem(start_list_type, JSON.stringify(old_list));
 
     } else {
       let new_list = JSON.parse(localStorage.getItem(new_list_type)) || [];
-      const old_index = old_list.findIndex((t) => (t.id == id));
+      const old_index = old_list.findIndex((t) => (t.id === id));
       if (old_index >= 0) {
         old_list.splice(old_index, 1);
       }
       if (new_list_type === start_list_type) new_list = old_list;
       if (date) {
-        insert_in_order(new_list, {id: id, title: title, details: details, date: date, time: time});
+        insert_in_order(new_list, {id: id, title: title || TITLE, details: details, date: date, time: time});
       } else {
-        new_list.push({id: id, title: title, details: details})
+        new_list.push({id: id, title: title || TITLE, details: details})
       }
       localStorage.setItem(start_list_type, JSON.stringify(old_list));
       localStorage.setItem(new_list_type, JSON.stringify(new_list));
@@ -63,7 +63,7 @@ export function EditTask() {
 
   function delete_task() {
     const old_list = JSON.parse(localStorage.getItem(start_list_type)) || [];
-    const old_index = old_list.findIndex((t) => (t.id == id));
+    const old_index = old_list.findIndex((t) => (t.id === id));
     if (old_index >= 0) {
       old_list.splice(old_index, 1);
     }
@@ -83,18 +83,18 @@ export function EditTask() {
         {/* <form id="task-form" method="get" action="/lists"> */}
           <div>
             <span>Task name: </span><input type="text" placeholder="Task" value={title}
-            onChange={(e) => setTitle(e.target.value || TITLE)}/>
+            onChange={(e) => setTitle(e.target.value)}/>
           </div>
           <div>
             <span>Details: </span>
             <textarea placeholder="details about the task" value={details}
-            onChange={(e) => setDetails(e.target.value || "")} />
+            onChange={(e) => setDetails(e.target.value)} />
           </div>
           <div>
             <span>Due Date: </span><input type="date" value={date}
-            onChange={(e) => setDate(e.target.value || "")} />
+            onChange={(e) => setDate(e.target.value)} />
             <span>Time: </span><input type="time" value={time}
-            onChange={(e) => setTime(e.target.value || "")} />
+            onChange={(e) => setTime(e.target.value)} />
           </div>
           {/* <div>Repeating? <input type="checkbox" /></div> */}
           <div>
@@ -111,7 +111,7 @@ export function EditTask() {
 function insert_in_order(list, task) {
   for (let i in list) {
     let t = list[i];
-    if ((t.date == task.date && t.time > task.time) || t.date > task.date) {
+    if ((t.date === task.date && t.time > task.time) || t.date > task.date) {
       list.splice(i, 0, task);
       return;
     }
