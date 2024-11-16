@@ -1,5 +1,6 @@
 import React from 'react';
 import { NewTaskButton } from './newTaskButton';
+import { Task } from './task';
 
 export function DatedList() {
     const [datedList, setDatedList] = React.useState([])
@@ -76,11 +77,12 @@ function SingleDateList({ date, list}) {
     </h3>
     <ul>
         {list.map((item, index) => (
-            <li key={item.id}>
-                <span className='task-title'>{item.title}</span>{" - "}
-                <span className='task-details'>{item.details}</span>{" - "}
-                <span className='task-time'>{item.time}</span>
-            </li>
+            <Task task={item} key={item.id}/>
+            // <li key={item.id}>
+            //     <span className='task-title'>{item.title}</span>{" - "}
+            //     <span className='task-details'>{item.details}</span>{" - "}
+            //     <span className='task-time'>{item.time}</span>
+            // </li>
         ))}
     </ul>
     </div>

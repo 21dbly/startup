@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './newTask.css';
+import './task.css';
 import { v4 as uuid } from 'uuid';
 import { useLocation } from 'react-router-dom';
 
@@ -27,6 +27,8 @@ export function NewTask() {
     }
   }
 
+  function cancel() {}
+
   return (
     <main>
       <div id="box">
@@ -48,7 +50,10 @@ export function NewTask() {
             onChange={(e) => setTime(e.target.value || "")} />
           </div>
           {/* <div>Repeating? <input type="checkbox" /></div> */}
-          <button onClick={submit}>Create</button>
+          <div>
+            <button onClick={cancel}>Cancel</button>
+            <button onClick={submit}>Create</button>
+          </div>
         </form>
       </div>
     </main>

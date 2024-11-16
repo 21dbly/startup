@@ -71,3 +71,5 @@ Reorganization:
 - [] ability to move tasks by dragging
 - [] repeating tasks
 - [] due date vs do date
+- [] rerouting to login when not logged in
+- [] figure out how url query things work so I can include the id in the url for editing tasks

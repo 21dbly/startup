@@ -37,3 +37,7 @@ main {
 textarea {
     height: 50px;
 }
+
+button {
+    margin: 10px;
+}

@@ -3,7 +3,8 @@ import './app.css';
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Login } from './login/login';
 import { Lists } from './lists/lists';
-import { NewTask } from './newTask/newTask';
+import { NewTask } from './task/newTask';
+import {EditTask} from './task/editTask';
 // import { useNavigate } from 'react-router-dom';
 
 export default function App() {
@@ -47,6 +48,8 @@ export default function App() {
                     <Route path='/lists' element={<Lists userName={userName}/>} />
 
                     <Route path='/newTask' element={<NewTask userName={userName}/>} />
+
+                    <Route path='/editTask' element={<EditTask />} />
                     
                     <Route path='*' element={<NotFound />} />
                 </Routes>

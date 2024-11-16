@@ -10,7 +10,7 @@ export function Login(props) {
     setImageUrl('https://images.pexels.com/photos/1955134/pexels-photo-1955134.jpeg');
   }, [])
 
-  console.log(props.isAuthorized)
+  // console.log(props.isAuthorized)
   return (
     <main>
       { props.isAuthorized ? <Authenticated onLogout={() => props.onAuthChange('', false)}/> : <Unauthenticated onLogin={(userName) => props.onAuthChange(userName, true)}/>}
