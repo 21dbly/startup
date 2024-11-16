@@ -5,7 +5,7 @@ export function NewTaskButton( {date} ) {
     const navigate = useNavigate();
 
     function handleClick() {
-        navigate('/newtask', { state: {date_clicked: date }});
+        navigate('/newTask', { state: {date_clicked: date }});
         // console.log(date);
     }
 

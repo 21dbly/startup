@@ -3,7 +3,7 @@ import './app.css';
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Login } from './login/login';
 import { Lists } from './lists/lists';
-import { Newtask } from './newtask/newtask';
+import { NewTask } from './newTask/newTask';
 // import { useNavigate } from 'react-router-dom';
 
 export default function App() {
@@ -30,10 +30,10 @@ export default function App() {
                 <header>
                     <h1>DoDue</h1>
                     <p>{isAuthorized ? "authorized" : "not"}</p>
+                    <NavLink className="menu" to="">Back to Login</NavLink>
                     {isAuthorized &&
-                        (<><NavLink className="menu" to="">Back to Login</NavLink>
-                        <NavLink className="menu" to="lists">List View</NavLink>
-                        <NavLink className="menu" to="newtask">New Task</NavLink>
+                        (<><NavLink className="menu" to="lists">List View</NavLink>
+                        <NavLink className="menu" to="newTask">New Task</NavLink>
                         <p className="menu" id="user">User: {userName}</p></>) }
 
                     {/* <a className="small-menu" href="login.html"> Login </a>
@@ -46,7 +46,7 @@ export default function App() {
 
                     <Route path='/lists' element={<Lists userName={userName}/>} />
 
-                    <Route path='/newtask' element={<Newtask userName={userName}/>} />
+                    <Route path='/newTask' element={<NewTask userName={userName}/>} />
                     
                     <Route path='*' element={<NotFound />} />
                 </Routes>

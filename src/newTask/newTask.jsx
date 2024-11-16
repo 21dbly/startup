@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import './newtask.css';
+import './newTask.css';
 import { v4 as uuid } from 'uuid';
 import { useLocation } from 'react-router-dom';
 
 //default values
 const TITLE = "Untitled";
 
-export function Newtask() {
+export function NewTask() {
   const location = useLocation()
   const date_clicked = location.state?.date_clicked || "";
 
