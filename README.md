@@ -59,14 +59,15 @@ For this deliverable I properly styled the application into its current appearan
 - [X] **Application images** - Styled the image.
 
 ## Things to be added
-- [] task deleting
+- [X] task deleting
 - [X] id's for each task (uuid?)
-- [] task editing
+- [X] task editing
 Reorganization:
   - [X] make add-task button a component
   - [] include labels in newtask form? (for accessability and stuff)
 
 - [] make tasks look nicer (css)
+- [] reformat dates and times to be better (Mon, Oct 1 or something)
 - [] ability to check off tasks instead of just deleting
 - [] ability to move tasks by dragging
 - [] repeating tasks
