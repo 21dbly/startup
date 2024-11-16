@@ -68,6 +68,7 @@ Reorganization:
 
 - [] make tasks look nicer (css)
 - [] reformat dates and times to be better (Mon, Oct 1 or something)
+- [] make it nicer for phones (at least make it possible to see the other list)
 - [] ability to check off tasks instead of just deleting
 - [] ability to move tasks by dragging
 - [] repeating tasks
