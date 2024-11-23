@@ -1,19 +1,37 @@
 import React from 'react';
 import './login.css';
+import {ModalMessage} from '../modalMessage/modalMessage.jsx'; // is it bad to go to a different folder like this?
 
 export function Unauthenticated(props) {
   const [userName, setUserName] = React.useState('');
-  const [password, setPassword] = React.useState('')
+  const [password, setPassword] = React.useState('');
+  const [displayError, setDisplayError] = React.useState(null);
 
   async function loginUser() {
-    localStorage.getItem('userName', userName);
-    props.onLogin(userName, true);
-    // this is obviously a work in progress
+    loginOrCreate('/api/auth/login');
   }
 
   async function createUser() {
-    localStorage.setItem('userName', userName)
-    props.onLogin(userName, true);
+    loginOrCreate('/api/auth/create');
+  }
+
+  async function loginOrCreate(endpoint) {
+    const response = await fetch(endpoint, {
+      method: 'post',
+      body: JSON.stringify({ email: userName, password: password }),
+      headers: {'Content-type': 'application/json; charset=UTF-8'}
+    });
+    if (response?.status === 200) {
+      localStorage.setItem('userName', userName);
+      props.onLogin(userName);
+    } else {
+      const body = await response.json();
+      if (body.msg) {
+        setDisplayError(`⚠ Error: ${body.msg}`);
+      } else {
+        setDisplayError(`${response.status} Error: ${response.statusText}`)
+      }
+    }
   }
 
   return (
@@ -33,6 +51,8 @@ export function Unauthenticated(props) {
         <button onClick={() => loginUser()}>Login</button>
         <button onClick={() => createUser()}>Create</button>
       </div>
+
+      <ModalMessage message={displayError} show={displayError} onHide={() => setDisplayError(null)}/>
     </>
   );
 }
