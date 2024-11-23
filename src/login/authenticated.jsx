@@ -4,8 +4,17 @@ import './login.css';
 export function Authenticated(props) {
 
   function logout() {
-    localStorage.removeItem('userName');
-    props.onLogout();
+    fetch(`/api/auth/logout`, {
+      method: 'delete',
+      // will use cookies to pass in tokens
+    })
+      .catch(() => {
+        // logout failed. Assuming offline
+      })
+      .finally(() => {
+        localStorage.removeItem('userName');
+        props.onLogout();
+      })
   }
 
   return (
