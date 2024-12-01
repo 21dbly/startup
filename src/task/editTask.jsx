@@ -1,64 +1,95 @@
 import React, { useEffect, useState } from 'react';
 import './task.css';
 import { useLocation, useNavigate } from 'react-router-dom';
+import {ModalMessage} from '../modalMessage/modalMessage.jsx';
 
 //default values
 const TITLE = "Untitled";
 
-export function EditTask() {
+export function EditTask({ userName }) {
   const navigate = useNavigate();
   const location = useLocation();
+  const [displayError, setDisplayError] = useState(null);
   const id = location.state?.id;
   const start_list_type = location.state?.list;
 
-  const list = JSON.parse(localStorage.getItem(start_list_type));
-  if (!list) {
-    // make error message
-    return (<main>ERROR! no list</main>);
-  }
-  const task = list.find((t) => (t.id === id));
-  if (!task) {
-    // make error message
-    return (<main>ERROR! no task with that id</main>);
-  }
-
-  const og_date = task.date;
-
-  const [title, setTitle] = useState(task.title);
-  const [details, setDetails] = useState(task.details);
-  const [date, setDate] = useState(task.date);
-  const [time, setTime] = useState(task.time);
-
-  function update() {
-    const new_list_type = date ? "datedList" : "undatedList";
-    const old_list = JSON.parse(localStorage.getItem(start_list_type)) || [];
-
-    if (date === og_date) {
-      const task_index = old_list.findIndex((t) => (t.id === id));
-      if (task_index < 0) {
-        console.log("the task you're looking for disappeared");
-        return(<p>will this error show? idk but the task you're looking for disappeared</p>);
-      }
-      old_list[task_index] = {id: id, title: title || TITLE, details: details, date: date, time: time};
-      localStorage.setItem(start_list_type, JSON.stringify(old_list));
-
+  const [ogDate, setOgDate] = useState('');
+  const [title, setTitle] = useState('');
+  const [details, setDetails] = useState('');
+  const [date, setDate] = useState('');
+  const [time, setTime] = useState('');
+  
+  // maybe local storage can help...
+  React.useEffect(() => {
+    fetch(`/api/${userName}/${start_list_type}/${id}`)
+        .then((response) => {
+          if (!response.ok) {
+            //I'm not sure the best way to do error handling doing fetch this way
+            // this is not working quite right
+            // it still goes to the next then even if there's an error?
+            setDisplayError(response.json().msg);
+            return;
+          }
+            return response.json();
+          })
+        .then((task) => {
+          setOgDate(task.date);
+          setTitle(task.title);
+          setDetails(task.details);
+          setDate(task.date);
+          setTime(task.time);
+        })
+  }, []);
+  
+  async function update() {
+    const response = await fetch(`api/${userName}/task`, {
+      method: 'put',
+      body: JSON.stringify({ old_date: ogDate, task: {id: id, title: title, details: details, date: date, time: time} }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    });
+    if (response?.status === 200) {
+      navigate('/lists');
     } else {
-      let new_list = JSON.parse(localStorage.getItem(new_list_type)) || [];
-      const old_index = old_list.findIndex((t) => (t.id === id));
-      if (old_index >= 0) {
-        old_list.splice(old_index, 1);
-      }
-      if (new_list_type === start_list_type) new_list = old_list;
-      if (date) {
-        insert_in_order(new_list, {id: id, title: title || TITLE, details: details, date: date, time: time});
+      // for some reason this line isn't working with errors
+      const body = await response.json();
+      if (body.msg) {
+        setDisplayError(`⚠ Error: ${body.msg}`);
       } else {
-        new_list.push({id: id, title: title || TITLE, details: details})
+        setDisplayError(`${response.status} Error: ${response.statusText}`);
       }
-      localStorage.setItem(start_list_type, JSON.stringify(old_list));
-      localStorage.setItem(new_list_type, JSON.stringify(new_list));
     }
 
-    navigate('/lists');
+  //   const new_list_type = date ? "datedList" : "undatedList";
+  //   const old_list = JSON.parse(localStorage.getItem(start_list_type)) || [];
+
+  //   if (date === og_date) {
+  //     const task_index = old_list.findIndex((t) => (t.id === id));
+  //     if (task_index < 0) {
+  //       console.log("the task you're looking for disappeared");
+  //       return(<p>will this error show? idk but the task you're looking for disappeared</p>);
+  //     }
+  //     old_list[task_index] = {id: id, title: title || TITLE, details: details, date: date, time: time};
+  //     localStorage.setItem(start_list_type, JSON.stringify(old_list));
+
+  //   } else {
+  //     let new_list = JSON.parse(localStorage.getItem(new_list_type)) || [];
+  //     const old_index = old_list.findIndex((t) => (t.id === id));
+  //     if (old_index >= 0) {
+  //       old_list.splice(old_index, 1);
+  //     }
+  //     if (new_list_type === start_list_type) new_list = old_list;
+  //     if (date) {
+  //       insert_in_order(new_list, {id: id, title: title || TITLE, details: details, date: date, time: time});
+  //     } else {
+  //       new_list.push({id: id, title: title || TITLE, details: details})
+  //     }
+  //     localStorage.setItem(start_list_type, JSON.stringify(old_list));
+  //     localStorage.setItem(new_list_type, JSON.stringify(new_list));
+  //   }
+
+  //   navigate('/lists');
   }
 
   function delete_task() {
@@ -104,6 +135,7 @@ export function EditTask() {
           </div>
         {/* </form> */}
       </div>
+      <ModalMessage message={displayError} show={displayError} onHide={() => setDisplayError(null)}/>
     </main>
   );
 }

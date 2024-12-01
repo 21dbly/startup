@@ -5,7 +5,7 @@ export function Task( {task} ) {
     const navigate = useNavigate();
 
     function handleClick() {
-        navigate("/editTask", {state: {id: task.id, list: task.date ? "datedList" : "undatedList"}});
+        navigate("/editTask", {state: {id: task.id, list: task.date ? "dated" : "undated"}});
     }
 
     return (

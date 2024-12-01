@@ -12,6 +12,11 @@ app.use(express.static('public'));
 
 app.use(express.json());
 
+// app.use((req, res, next) => {
+//   console.log(req.url);
+//   next();
+// });
+
 let apiRouter = express.Router();
 app.use('/api', apiRouter);
 
@@ -62,6 +67,22 @@ apiRouter.get('/:user/:list_type(undated|dated)', (req, res) => {
   // console.log(req.params.list_type)
   const list = user_obj.lists?.[req.params.list_type] || [];
   res.send(list);
+});
+
+apiRouter.get('/:user/:list_type(undated|dated)/:task_id', (req, res) => {
+  const user_obj = users[req.params.user]
+  if (!user_obj) {
+    res.status(404).send({ msg: 'User not found' });
+    return;
+  }
+  // console.log(req.params.list_type)
+  const list = user_obj.lists?.[req.params.list_type] || [];
+  const task = list.find((t) => (t.id === req.params.task_id));
+  if (!task) {
+    res.status(404).send({msg: 'Task not found'});
+    return;
+  }
+  res.send(task);
 });
 
 // adds a task to either undated or dated

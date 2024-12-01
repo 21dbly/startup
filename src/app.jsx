@@ -49,7 +49,7 @@ export default function App() {
 
                     <Route path='/newTask' element={<NewTask userName={userName}/>} />
 
-                    <Route path='/editTask' element={<EditTask />} />
+                    <Route path='/editTask' element={<EditTask userName={userName}/>} />
                     
                     <Route path='*' element={<NotFound />} />
                 </Routes>

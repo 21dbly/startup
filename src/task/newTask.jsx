@@ -6,7 +6,7 @@ import { useLocation } from 'react-router-dom';
 //default values
 const TITLE = "Untitled";
 
-export function NewTask() {
+export function NewTask({ userName }) {
   const location = useLocation()
   const date_clicked = location.state?.date_clicked || "";
 
@@ -15,19 +15,22 @@ export function NewTask() {
   const [date, setDate] = useState(date_clicked);
   const [time, setTime] = useState("");
 
-  function submit() {
-    if (date) {
-      let list = JSON.parse(localStorage.getItem('datedList')) || [];
-      insert_in_order(list, {id: uuid(), title: title, details: details, date: date, time: time});
-      localStorage.setItem('datedList', JSON.stringify(list));
+  async function submit() {
+    const response = await fetch(`api/${userName}/task`, {
+      method: 'post',
+      body: JSON.stringify({ task: {id: uuid(), title: title, details: details, date: date, time: time}}),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    });
+    if (response?.status === 200) {
+      // navigate to /lists
     } else {
-      let list = JSON.parse(localStorage.getItem('undatedList')) || [];
-      list.push({id: uuid(), title: title, details: details});
-      localStorage.setItem('undatedList', JSON.stringify(list)) ;
+      // error
     }
   }
 
-  function cancel() {}
+  function cancel(/*navigate back*/) {}
 
   return (
     <main>

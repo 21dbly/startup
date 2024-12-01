@@ -2,16 +2,15 @@ import React from 'react';
 import { NewTaskButton } from './newTaskButton';
 import { Task } from './task';
 
-export function UndatedList() {
+export function UndatedList({ userName }) {
     const [undatedList, setUndatedList] = React.useState([])
 
     // Demonstrates calling a service asynchronously so that
     // React can properly update state objects with the results.
     React.useEffect(() => {
-        const undatedListJSON = localStorage.getItem('undatedList');
-        if (undatedListJSON) {
-            setUndatedList(JSON.parse(undatedListJSON));
-        }
+        fetch(`/api/${userName}/undated`)
+            .then((response) => response.json())
+            .then((list) => {setUndatedList(list);});
     }, []);
 
     if (undatedList.length === 0) {

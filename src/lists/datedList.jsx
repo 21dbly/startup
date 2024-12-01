@@ -2,7 +2,7 @@ import React from 'react';
 import { NewTaskButton } from './newTaskButton';
 import { Task } from './task';
 
-export function DatedList() {
+export function DatedList({ userName }) {
     const [datedList, setDatedList] = React.useState([])
 
     const today = new Date();
@@ -11,10 +11,9 @@ export function DatedList() {
     // Demonstrates calling a service asynchronously so that
     // React can properly update state objects with the results.
     React.useEffect(() => {
-        const datedListJSON = localStorage.getItem('datedList');
-        if (datedListJSON) {
-            setDatedList(JSON.parse(datedListJSON));
-        }
+        fetch(`/api/${userName}/dated`)
+            .then((response) => response.json())
+            .then((list) => {setDatedList(list);});
     }, []);
 
     if (datedList.length === 0) {

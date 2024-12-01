@@ -4,13 +4,13 @@ import { DatedList } from './datedList.jsx';
 import { UndatedList } from './undatedList.jsx';
 
 
-export function Lists() {
+export function Lists({ userName }) {
 
   return (
     <main id="lists-main">
-        <DatedList />
+        <DatedList userName={userName}/>
         
-        <UndatedList />
+        <UndatedList userName={userName}/>
     </main>
   );
 }

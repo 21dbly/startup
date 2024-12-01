@@ -29,7 +29,7 @@ export function Unauthenticated(props) {
       if (body.msg) {
         setDisplayError(`⚠ Error: ${body.msg}`);
       } else {
-        setDisplayError(`${response.status} Error: ${response.statusText}`)
+        setDisplayError(`${response.status} Error: ${response.statusText}`);
       }
     }
   }
