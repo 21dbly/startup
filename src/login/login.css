@@ -30,6 +30,8 @@ main > * {
 }
 
 img {
+    /* I cannot get the image to look right */
+    /* why is css like this... */
     max-width: 100%;
     /* min-width: 40%; */
     max-height: 50vh;
