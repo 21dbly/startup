@@ -136,8 +136,21 @@ apiRouter.put('/:user/task', (req, res) => {
   res.send(add_to_correct_list(task, user_obj));
 });
 
-apiRouter.delete('/:user/task', (req, res) => {
-  // add delete task endpoint
+apiRouter.delete('/task/:user/:list_type(undated|dated)/:task_id', (req, res) => {
+  const { user, list_type, task_id } = req.params;
+  const user_obj = users[user];
+  if (!user_obj) {
+    res.status(404).send({ msg: 'User not found' });
+    return;
+  }
+  const list = user_obj.lists[list_type];
+  if (!list) {
+    res.status(404).send({ msg: 'list not found' });
+    return;
+  }
+  const i = list.findIndex((t) => (t.id === task_id));
+  user_obj[list_type] = list.splice(i, 1);
+  res.send(`task ${task_id} deleted`);
 });
 
 app.listen(port, () => {

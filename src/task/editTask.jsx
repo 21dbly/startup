@@ -60,47 +60,23 @@ export function EditTask({ userName }) {
         setDisplayError(`${response.status} Error: ${response.statusText}`);
       }
     }
-
-  //   const new_list_type = date ? "datedList" : "undatedList";
-  //   const old_list = JSON.parse(localStorage.getItem(start_list_type)) || [];
-
-  //   if (date === og_date) {
-  //     const task_index = old_list.findIndex((t) => (t.id === id));
-  //     if (task_index < 0) {
-  //       console.log("the task you're looking for disappeared");
-  //       return(<p>will this error show? idk but the task you're looking for disappeared</p>);
-  //     }
-  //     old_list[task_index] = {id: id, title: title || TITLE, details: details, date: date, time: time};
-  //     localStorage.setItem(start_list_type, JSON.stringify(old_list));
-
-  //   } else {
-  //     let new_list = JSON.parse(localStorage.getItem(new_list_type)) || [];
-  //     const old_index = old_list.findIndex((t) => (t.id === id));
-  //     if (old_index >= 0) {
-  //       old_list.splice(old_index, 1);
-  //     }
-  //     if (new_list_type === start_list_type) new_list = old_list;
-  //     if (date) {
-  //       insert_in_order(new_list, {id: id, title: title || TITLE, details: details, date: date, time: time});
-  //     } else {
-  //       new_list.push({id: id, title: title || TITLE, details: details})
-  //     }
-  //     localStorage.setItem(start_list_type, JSON.stringify(old_list));
-  //     localStorage.setItem(new_list_type, JSON.stringify(new_list));
-  //   }
-
-  //   navigate('/lists');
   }
 
-  function delete_task() {
-    const old_list = JSON.parse(localStorage.getItem(start_list_type)) || [];
-    const old_index = old_list.findIndex((t) => (t.id === id));
-    if (old_index >= 0) {
-      old_list.splice(old_index, 1);
+  async function delete_task() {
+    const response = await fetch(`api/task/${userName}/${start_list_type}/${id}`, {
+      method: 'delete',
+    });
+    if (response?.status === 200) {
+      navigate('/lists');
+    } else {
+      // this line probably needs some work too then
+      const body = await response.json();
+      if (body.msg) {
+        setDisplayError(`⚠ Error: ${body.msg}`);
+      } else {
+        setDisplayError(`${response.status} Error: ${response.statusText}`);
+      }
     }
-    localStorage.setItem(start_list_type, JSON.stringify(old_list));
-    
-    navigate('/lists');
   }
 
   function cancel() {
