@@ -58,7 +58,7 @@ apiRouter.delete('/auth/logout', (req, res) => { // why is async not used here?
 //get undated or dated list
 // will change to use cookies instead of user in the url
 // this might break with certain usernames
-apiRouter.get('/:user/:list_type(undated|dated)', (req, res) => {
+apiRouter.get('/list/:user/:list_type(undated|dated)', (req, res) => {
   const user_obj = users[req.params.user]
   if (!user_obj) {
     res.status(404).send({ msg: 'User not found' });
@@ -69,7 +69,7 @@ apiRouter.get('/:user/:list_type(undated|dated)', (req, res) => {
   res.send(list);
 });
 
-apiRouter.get('/:user/:list_type(undated|dated)/:task_id', (req, res) => {
+apiRouter.get('/task/:user/:list_type(undated|dated)/:task_id', (req, res) => {
   const user_obj = users[req.params.user]
   if (!user_obj) {
     res.status(404).send({ msg: 'User not found' });
@@ -86,7 +86,7 @@ apiRouter.get('/:user/:list_type(undated|dated)/:task_id', (req, res) => {
 });
 
 // adds a task to either undated or dated
-apiRouter.post('/:user/task', (req, res) => {
+apiRouter.post('/task/:user', (req, res) => {
   const user = req.params.user;
   const user_obj = users[user]
   if (!user_obj) {
@@ -104,7 +104,7 @@ apiRouter.post('/:user/task', (req, res) => {
   res.send(add_to_correct_list(task, user_obj));
 });
 
-apiRouter.put('/:user/task', (req, res) => {
+apiRouter.put('/task/:user', (req, res) => {
   const user = req.params.user;
   const user_obj = users[user];
   if (!user_obj) {

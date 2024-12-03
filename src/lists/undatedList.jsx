@@ -8,7 +8,7 @@ export function UndatedList({ userName }) {
     // Demonstrates calling a service asynchronously so that
     // React can properly update state objects with the results.
     React.useEffect(() => {
-        fetch(`/api/${userName}/undated`)
+        fetch(`/api/list/${userName}/undated`)
             .then((response) => response.json())
             .then((list) => {setUndatedList(list);});
     }, []);

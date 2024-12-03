@@ -21,7 +21,7 @@ export function EditTask({ userName }) {
   
   // maybe local storage can help...
   React.useEffect(() => {
-    fetch(`/api/${userName}/${start_list_type}/${id}`)
+    fetch(`/api/task/${userName}/${start_list_type}/${id}`)
         .then((response) => {
           if (!response.ok) {
             //I'm not sure the best way to do error handling doing fetch this way
@@ -42,7 +42,7 @@ export function EditTask({ userName }) {
   }, []);
   
   async function update() {
-    const response = await fetch(`api/${userName}/task`, {
+    const response = await fetch(`api/task/${userName}`, {
       method: 'put',
       body: JSON.stringify({ old_date: ogDate, task: {id: id, title: title, details: details, date: date, time: time} }),
       headers: {

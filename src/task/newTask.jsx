@@ -16,7 +16,7 @@ export function NewTask({ userName }) {
   const [time, setTime] = useState("");
 
   async function submit() {
-    const response = await fetch(`api/${userName}/task`, {
+    const response = await fetch(`api/task/${userName}`, {
       method: 'post',
       body: JSON.stringify({ task: {id: uuid(), title: title, details: details, date: date, time: time}}),
       headers: {
@@ -47,6 +47,7 @@ export function NewTask({ userName }) {
             onChange={(e) => setDetails(e.target.value || "")} />
           </div>
           <div>
+            {/* default date value is not showing up */}
             <span>Due Date: </span><input type="date" value={date}
             onChange={(e) => setDate(e.target.value || "")} />
             <span>Time: </span><input type="time" 
@@ -61,15 +62,4 @@ export function NewTask({ userName }) {
       </div>
     </main>
   );
-}
-
-function insert_in_order(list, task) {
-  for (let i in list) {
-    let t = list[i];
-    if ((t.date === task.date && t.time > task.time) || t.date > task.date) {
-      list.splice(i, 0, task);
-      return;
-    }
-  }
-  list.push(task);
 }

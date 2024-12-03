@@ -11,7 +11,7 @@ export function DatedList({ userName }) {
     // Demonstrates calling a service asynchronously so that
     // React can properly update state objects with the results.
     React.useEffect(() => {
-        fetch(`/api/${userName}/dated`)
+        fetch(`/api/list/${userName}/dated`)
             .then((response) => response.json())
             .then((list) => {setDatedList(list);});
     }, []);
