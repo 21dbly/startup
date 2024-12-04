@@ -6,14 +6,14 @@ export function DatedList({ userName }) {
     const [datedList, setDatedList] = React.useState([])
 
     const today = new Date();
-    const today_YMD = `${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`;
+    //                                                                        I know this is not elegant. I'll fix it some day
+    const today_YMD = `${today.getFullYear()}-${today.getMonth()+1}-${today.getDate() >= 10 ? today.getDate() : `0${today.getDate()}`}`;
 
-    // Demonstrates calling a service asynchronously so that
-    // React can properly update state objects with the results.
     React.useEffect(() => {
         fetch(`/api/list/${userName}/dated`)
             .then((response) => response.json())
-            .then((list) => {setDatedList(list);});
+            .then((list) => {setDatedList(list);})
+            .catch((e) => {console.log(e)});
     }, []);
 
     if (datedList.length === 0) {
@@ -21,7 +21,7 @@ export function DatedList({ userName }) {
     }
 
     const datedTable = [];
-    let date = datedList[0].date;
+    let date = datedList[0]?.date;
     let singleDateList = [];
     for (let task of datedList) {
         if (date !== task.date) {

@@ -5,8 +5,6 @@ import { Task } from './task';
 export function UndatedList({ userName }) {
     const [undatedList, setUndatedList] = React.useState([])
 
-    // Demonstrates calling a service asynchronously so that
-    // React can properly update state objects with the results.
     React.useEffect(() => {
         fetch(`/api/list/${userName}/undated`)
             .then((response) => response.json())
