@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import './task.css';
 import { v4 as uuid } from 'uuid';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 //default values
 const TITLE = "Untitled";
 
 export function NewTask({ userName }) {
-  const location = useLocation()
+  const navigate = useNavigate();
+  const location = useLocation();
   const date_clicked = location.state?.date_clicked || "";
 
   const [title, setTitle] = useState(TITLE);
@@ -24,19 +25,20 @@ export function NewTask({ userName }) {
       },
     });
     if (response?.status === 200) {
-      // navigate to /lists
+      navigate('/lists');
     } else {
       // error
     }
   }
 
-  function cancel(/*navigate back*/) {}
+  function cancel() {
+    navigate('/lists');
+  }
 
   return (
     <main>
       <div id="box">
         <h2>New Task</h2>
-        <form id="task-form" method="get" action="/lists">
           <div>
             <span>Task name: </span><input type="text" placeholder="Task"
             onChange={(e) => setTitle(e.target.value || TITLE)}/>
@@ -58,7 +60,6 @@ export function NewTask({ userName }) {
             <button onClick={cancel}>Cancel</button>
             <button onClick={submit}>Create</button>
           </div>
-        </form>
       </div>
     </main>
   );
