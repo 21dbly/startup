@@ -8,7 +8,7 @@ export function Login(props) {
   const [imageUrl, setImageUrl] = React.useState('');
 
   React.useEffect(() => {
-    const random = Math.floor(Math.random() * 1000);
+    const random = Math.floor(Math.random() * 900);
     fetch(`https://picsum.photos/v2/list?page=${random}&limit=1`)
       .then((response) => response.json())
       .then((data) => {
