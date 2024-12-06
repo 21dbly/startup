@@ -82,7 +82,7 @@ For this deliverable I added backend endpoints to get lists, get task info, add 
 
 - [x] **Node.js/Express HTTP service** - done!
 - [x] **Static middleware for frontend** - done!
-- [X] **Calls to third party endpoints** - done!
+- [X] **Calls to third party endpoints** - get's a random image for the login page using the same api as simon
 - [x] **Backend service endpoints** - Placeholders for login that stores the current user on the server. Endpoints for getting lists and adding and editing tasks.
 - [x] **Frontend calls service endpoints** - I did this using the fetch function.
 
@@ -97,6 +97,7 @@ Reorganization:
   - [ ] include labels in newtask form? (for accessability and stuff)  
   
 - [ ] make tasks look nicer (css)
+- [ ] make login image scale better at different sizes
 - [ ] reformat dates and times to be better (Mon, Oct 1 or something)
 - [ ] make it nicer for phones (at least make it possible to see the other list)
 - [ ] ability to check off tasks instead of just deleting
