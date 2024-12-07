@@ -1,3 +1,6 @@
+# sensitive info
+database/dbConfig.json
+
 # dependencies
 node_modules
 

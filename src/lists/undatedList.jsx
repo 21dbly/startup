@@ -6,7 +6,7 @@ export function UndatedList({ userName }) {
     const [undatedList, setUndatedList] = React.useState([])
 
     React.useEffect(() => {
-        fetch(`/api/list/${userName}/undated`)
+        fetch(`/api/list/undated`)
             .then((response) => response.json())
             .then((list) => {setUndatedList(list);});
     }, []);

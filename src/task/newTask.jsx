@@ -17,7 +17,7 @@ export function NewTask({ userName }) {
   const [time, setTime] = useState("");
 
   async function submit() {
-    const response = await fetch(`api/task/${userName}`, {
+    const response = await fetch(`api/task`, {
       method: 'post',
       body: JSON.stringify({ task: {id: uuid(), title: title, details: details, date: date, time: time}}),
       headers: {

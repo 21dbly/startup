@@ -21,7 +21,7 @@ export function EditTask({ userName }) {
   
   // maybe local storage can help...
   React.useEffect(() => {
-    fetch(`/api/task/${userName}/${start_list_type}/${id}`)
+    fetch(`/api/task/${start_list_type}/${id}`)
         .then((response) => {
           if (!response.ok) {
             //I'm not sure the best way to do error handling doing fetch this way
@@ -33,16 +33,16 @@ export function EditTask({ userName }) {
             return response.json();
           })
         .then((task) => {
-          setOgDate(task.date);
-          setTitle(task.title);
-          setDetails(task.details);
-          setDate(task.date);
-          setTime(task.time);
+          setOgDate(task.date || "");
+          setTitle(task.title || "");
+          setDetails(task.details || "");
+          setDate(task.date || "");
+          setTime(task.time || "");
         })
   }, []);
   
   async function update() {
-    const response = await fetch(`api/task/${userName}`, {
+    const response = await fetch(`api/task`, {
       method: 'put',
       body: JSON.stringify({ old_date: ogDate, task: {id: id, title: title, details: details, date: date, time: time} }),
       headers: {
@@ -63,7 +63,7 @@ export function EditTask({ userName }) {
   }
 
   async function delete_task() {
-    const response = await fetch(`api/task/${userName}/${start_list_type}/${id}`, {
+    const response = await fetch(`api/task/${start_list_type}/${id}`, {
       method: 'delete',
     });
     if (response?.status === 200) {

@@ -10,7 +10,7 @@ export function DatedList({ userName }) {
     const today_YMD = `${today.getFullYear()}-${today.getMonth()+1}-${today.getDate() >= 10 ? today.getDate() : `0${today.getDate()}`}`;
 
     React.useEffect(() => {
-        fetch(`/api/list/${userName}/dated`)
+        fetch(`/api/list/dated`)
             .then((response) => response.json())
             .then((list) => {setDatedList(list);})
             .catch((e) => {console.log(e)});
