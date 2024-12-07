@@ -38,7 +38,9 @@ I am going to use the required technologies in the following ways.
 - **DB/Login** - Store users and tasks in database. Register and login users. Credentials securely stored in database. Can't view/access tasks unless authenticated.
 - **WebSocket** - ability to share a task with another user
 
+
 ## HTML deliverable
+
 For this deliverable I built out the structure of my application using HTML.
 
 - [x] **HTML pages** - Four HTML pages that represent the ability to login, the dated to-do list ("Today"), and the undated to-do list ("To Do") and also a page for creating a new task, or viewing the details of a task.
@@ -48,7 +50,9 @@ For this deliverable I built out the structure of my application using HTML.
 - [x] **DB/Login** - Input box and submit button for login and creating a new task. The login info as well as all the lists are stored in a database.
 - [x] **WebSocket** - A list can be editted on a different device and show up in realtime through websockets. I may also add a way to share tasks with others, but I'm not sure about that idea yet, so for now this is enough I think.
 
+
 ## CSS deliverable
+
 For this deliverable I properly styled the application into its current appearance.
 
 - [x] **Header, footer, and main content body** - Yep, I've got those and they work well.
@@ -58,7 +62,9 @@ For this deliverable I properly styled the application into its current appearan
 - [x] **Application text content** - Consistent and simple font and color scheme throughout the website.
 - [X] **Application images** - Styled the image.
 
+
 ## React deliverable
+
 For this deliverable I used JavaScript and React so that the application works for a single user. I also added placeholders for future technology.
 
 - [x] **Bundled and transpiled** - done finally!
@@ -70,6 +76,15 @@ For this deliverable I used JavaScript and React so that the application works f
 - [x] **Router** - Routing between login, list view, newTask, and editTask components.
 - [x] **Hooks** - I used `UseState` to track changes in task data while editing or creating. I also used useEffect to retrieve the list data from LocalStorage.
 
+## Service deliverable
+
+For this deliverable I added backend endpoints to get lists, get task info, add a task to a list, edit a task, and delete a task
+
+- [x] **Node.js/Express HTTP service** - done!
+- [x] **Static middleware for frontend** - done!
+- [X] **Calls to third party endpoints** - get's a random image for the login page using the same api as simon
+- [x] **Backend service endpoints** - Placeholders for login that stores the current user on the server. Endpoints for getting lists and adding and editing tasks.
+- [x] **Frontend calls service endpoints** - I did this using the fetch function.
 
 
 ## Things to be added in the future
@@ -81,8 +96,8 @@ Reorganization:
   - [X] make add-task button a component
   - [ ] include labels in newtask form? (for accessability and stuff)  
   
-
 - [ ] make tasks look nicer (css)
+- [ ] make login image scale better at different sizes
 - [ ] reformat dates and times to be better (Mon, Oct 1 or something)
 - [ ] make it nicer for phones (at least make it possible to see the other list)
 - [ ] ability to check off tasks instead of just deleting
@@ -90,4 +105,6 @@ Reorganization:
 - [ ] repeating tasks
 - [ ] due date vs do date
 - [ ] rerouting to login when not logged in
-- [ ] figure out how url query things work so I can include the id in the url for editing tasks
+- [ ] figure out how url query things work so I can include the id in the url for editing tasks?
+
+

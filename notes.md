@@ -212,3 +212,7 @@ Use uuid to get unique identifiers
 bcrypt is a hashing function you can use:  
 `await bcrypt.hash(password, 10)`  
 (number is how gobbled and time consuming you want it)
+
+# Security
+
+- OWASP: open source security group
