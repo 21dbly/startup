@@ -20,19 +20,23 @@ const dbUsers = db.collection('users');
 });
 
 function getUser(email) {
+  if (!email) return;
   return dbUsers.findOne({ email: email }, {projection:{ email:1, password:1, loginToken:1 }});
 }
 
 function getUserByToken(token) {
+  if (!token) return;
   return dbUsers.findOne({ loginToken: token }, {projection:{ email:1, password:1, loginToken:1 }});
 }
 
 async function getListByToken(token, listType) {
+  if (!token) return;
   const response = await dbUsers.findOne({ loginToken: token }, {projection:{ [listType]:1 }});
   return response[listType];
 }
 
 function getListsByToken(token) {
+  if (!token) return;
   return dbUsers.findOne({ loginToken: token }, {projection:{ undated:1, dated:1 }});
 }
 
@@ -49,6 +53,7 @@ async function createUser(email, password) {
 }
 
 async function updateList(token, listsToUpdateObj) {
+  if (!token) return;
   return dbUsers.updateOne({ loginToken:token }, { $set: listsToUpdateObj}, { upsert:true });
 }
 

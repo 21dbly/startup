@@ -11,7 +11,7 @@ export function NewTask({ userName }) {
   const location = useLocation();
   const date_clicked = location.state?.date_clicked || "";
 
-  const [title, setTitle] = useState(TITLE);
+  const [title, setTitle] = useState("");
   const [details, setDetails] = useState("");
   const [date, setDate] = useState(date_clicked);
   const [time, setTime] = useState("");
@@ -19,7 +19,7 @@ export function NewTask({ userName }) {
   async function submit() {
     const response = await fetch(`api/task`, {
       method: 'post',
-      body: JSON.stringify({ task: {id: uuid(), title: title, details: details, date: date, time: time}}),
+      body: JSON.stringify({ task: {id: uuid(), title: (title||TITLE), details: details, date: date, time: time}}),
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
       },
@@ -41,7 +41,7 @@ export function NewTask({ userName }) {
         <h2>New Task</h2>
           <div>
             <span>Task name: </span><input type="text" placeholder="Task"
-            onChange={(e) => setTitle(e.target.value || TITLE)}/>
+            onChange={(e) => setTitle(e.target.value || "")}/>
           </div>
           <div>
             <span>Details: </span>

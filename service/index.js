@@ -102,6 +102,10 @@ secureApiRouter.post('/task', async (req, res) => {
     res.status(400).send({ msg: 'task not provided' });
     return;
   }
+  if (!task.title) {
+    res.status(400).send({ msg: 'task must have title' });
+    return;
+  }
   verify_lists(lists);
   const updatedListObj = add_to_correct_list(task, lists);
   await DB.updateList(req.cookies['loginToken'], updatedListObj);
@@ -114,6 +118,10 @@ secureApiRouter.put('/task', async (req, res) => {
   const old_date = req.body.old_date;
   if (!task) {
     res.status(400).send({ msg: 'task not provided' });
+    return;
+  }
+  if (!task.title) {
+    res.status(400).send({ msg: 'task must have title' });
     return;
   }
 
