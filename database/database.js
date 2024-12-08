@@ -48,8 +48,9 @@ async function createUser(email, password) {
     password: passwordHash,
     loginToken: uuid.v4(),
   };
-  const result = await dbUsers.insertOne(user);
-  return result;
+  const { insertedId } = await dbUsers.insertOne(user);
+  user._id = insertedId;
+  return user;
 }
 
 async function updateList(token, listsToUpdateObj) {
