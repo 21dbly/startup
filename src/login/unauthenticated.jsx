@@ -48,8 +48,8 @@ export function Unauthenticated(props) {
           onChange={(e) => setPassword(e.target.value)}/>
       </div>
       <div id="login-buttons">
-        <button onClick={() => loginUser()}>Login</button>
-        <button onClick={() => createUser()}>Create</button>
+        <button onClick={() => loginUser()} disabled={!userName || !password}>Login</button>
+        <button onClick={() => createUser()} disabled={!userName || !password}>Create</button>
       </div>
 
       <ModalMessage message={displayError} show={displayError} onHide={() => setDisplayError(null)}/>

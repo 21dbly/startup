@@ -48,6 +48,10 @@ button {
     border-radius: 3px;
 }
 
+button:disabled {
+    background: rgb(85, 85, 85);
+}
+
 @media (max-width: 400px) {
     header h1 {
         display: none;
