@@ -86,6 +86,17 @@ For this deliverable I added backend endpoints to get lists, get task info, add 
 - [x] **Backend service endpoints** - Placeholders for login that stores the current user on the server. Endpoints for getting lists and adding and editing tasks.
 - [x] **Frontend calls service endpoints** - I did this using the fetch function.
 
+## DB/Login deliverable - _not deliverd to production yet (service has not been graded)_
+
+For this deliverable I store and validate user information using the database, and I store each user list seperately in the database
+
+- [x] **MongoDB Atlas database created** - done!
+- [x] **Stores data in MongoDB** - done! Stores list data and user login data
+- [x] **User registration** - Creates a new account in the database.
+- [x] **existing user** - Stores lists under the correct user if the user exists.
+- [x] **Use MongoDB to store credentials** - Stores both user and their lists/tasks.
+- [X] **Restricts functionality** - You cannot access any lists or make any tasks until you have logged in.
+
 
 ## Things to be added in the future
 - [X] task deleting
