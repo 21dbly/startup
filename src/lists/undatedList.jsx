@@ -8,17 +8,8 @@ export function UndatedList({ userName }) {
 
     React.useEffect(() => {
         fetch(`/api/list/undated`)
-            .then(async (response) => {
-                try {
-                    return await response.json();
-                } catch (error) {
-                    throw new Error(`${response.status}: ${response.statusText}`);
-                }
-            })
-            .then(async (response) => {
-                if (!response.ok) {throw new Error(`${response.msg}`);}
-                return response;
-            })
+            .then(handleFetchError)
+            .then((r) => (r.json()))
             .then((list) => {setUndatedList(list);})
             .catch((e) => {
                 console.log(e.message);
@@ -64,3 +55,18 @@ function BlankList() {
     </section>
     );
 }
+
+async function handleFetchError(response) {
+    // takes in fetch response
+    // throws error with correct message if not valid
+    // returns jsonified response if valid
+    if (!response.ok) {
+      try {
+        await response.json();
+      } catch (error) {
+        throw new Error(`${response.status}: ${response.statusText}`);
+      }
+      throw new Error(`${response.msg}`);
+    }
+    return response;
+  }

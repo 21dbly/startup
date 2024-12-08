@@ -12,17 +12,8 @@ export function DatedList({ userName }) {
 
     React.useEffect(() => {
         fetch(`/api/list/dated`)
-            .then(async (response) => {
-                try {
-                    return await response.json();
-                } catch (error) {
-                    throw new Error(`${response.status}: ${response.statusText}`);
-                }
-            })
-            .then(async (response) => {
-                if (!response.ok) {throw new Error(`${response.msg}`);}
-                return response;
-            })
+            .then(handleFetchError)
+            .then((response) => response.json())
             .then((list) => {setDatedList(list);})
             .catch((e) => {
                 console.log(e.message);
@@ -92,3 +83,18 @@ function SingleDateList({ date, list}) {
     </div>
     );
 }
+
+async function handleFetchError(response) {
+    // takes in fetch response
+    // throws error with correct message if not valid
+    // returns jsonified response if valid
+    if (!response.ok) {
+      try {
+        await response.json();
+      } catch (error) {
+        throw new Error(`${response.status}: ${response.statusText}`);
+      }
+      throw new Error(`${response.msg}`);
+    }
+    return response;
+  }
