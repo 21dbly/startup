@@ -69,10 +69,10 @@ apiRouter.use(secureApiRouter);
 secureApiRouter.use(async (req, res, next) => {
   const authToken = req.cookies['loginToken'];
   const user = await DB.getUserByToken(authToken);
-  if (user) {
-    next();
-  } else {
+  if (!authToken || !user) {
     res.status(401).send({ msg: 'Unauthorized' })
+  } else {
+    next();
   }
 });
 

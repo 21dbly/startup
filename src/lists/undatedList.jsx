@@ -3,13 +3,32 @@ import { NewTaskButton } from './newTaskButton';
 import { Task } from './task';
 
 export function UndatedList({ userName }) {
-    const [undatedList, setUndatedList] = React.useState([])
+    const [undatedList, setUndatedList] = React.useState([]);
+    const [error, setError] = React.useState("");
 
     React.useEffect(() => {
         fetch(`/api/list/undated`)
-            .then((response) => response.json())
-            .then((list) => {setUndatedList(list);});
+            .then(async (response) => {
+                try {
+                    return await response.json();
+                } catch (error) {
+                    throw new Error(`${response.status}: ${response.statusText}`);
+                }
+            })
+            .then(async (response) => {
+                if (!response.ok) {throw new Error(`${response.msg}`);}
+                return response;
+            })
+            .then((list) => {setUndatedList(list);})
+            .catch((e) => {
+                console.log(e.message);
+                setError(e.message);
+            });
     }, []);
+    
+    if (error) {
+        return (<p>{error}</p>);
+    }
 
     if (undatedList.length === 0) {
         return <BlankList />;

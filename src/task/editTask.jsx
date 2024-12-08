@@ -22,16 +22,7 @@ export function EditTask({ userName }) {
   // maybe local storage can help...
   React.useEffect(() => {
     fetch(`/api/task/${start_list_type}/${id}`)
-        .then((response) => {
-          if (!response.ok) {
-            //I'm not sure the best way to do error handling doing fetch this way
-            // this is not working quite right
-            // it still goes to the next then even if there's an error?
-            setDisplayError(response.json().msg);
-            return;
-          }
-            return response.json();
-          })
+        .then(handleFetchError)
         .then((task) => {
           setOgDate(task.date || "");
           setTitle(task.title || "");
@@ -39,7 +30,27 @@ export function EditTask({ userName }) {
           setDate(task.date || "");
           setTime(task.time || "");
         })
+        .catch((e) => {
+          console.log(e);
+          setDisplayError(`Error: ${e.message}`);
+        })
   }, []);
+
+  async function handleFetchError(response) {
+    // takes in fetch response
+    // throws error with correct message if not valid
+    // returns jsonified response if valid
+    let responseObj;
+    try {
+      responseObj = await response.json();
+    } catch (error) {
+      throw new Error(`${response.status}: ${response.statusText}`);
+    }
+    if (!responseObj.ok) {
+      throw new Error(`${responseObj.msg}`);
+    }
+    return responseObj;
+  }
   
   async function update() {
     const response = await fetch(`api/task`, {

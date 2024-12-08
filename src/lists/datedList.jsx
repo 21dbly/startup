@@ -3,7 +3,8 @@ import { NewTaskButton } from './newTaskButton';
 import { Task } from './task';
 
 export function DatedList({ userName }) {
-    const [datedList, setDatedList] = React.useState([])
+    const [datedList, setDatedList] = React.useState([]);
+    const [error, setError] = React.useState("");
 
     const today = new Date();
     //                                                                        I know this is not elegant. I'll fix it some day
@@ -11,10 +12,29 @@ export function DatedList({ userName }) {
 
     React.useEffect(() => {
         fetch(`/api/list/dated`)
-            .then((response) => response.json())
+            .then(async (response) => {
+                try {
+                    return await response.json();
+                } catch (error) {
+                    throw new Error(`${response.status}: ${response.statusText}`);
+                }
+            })
+            .then(async (response) => {
+                if (!response.ok) {throw new Error(`${response.msg}`);}
+                return response;
+            })
             .then((list) => {setDatedList(list);})
-            .catch((e) => {console.log(e)});
+            .catch((e) => {
+                console.log(e.message);
+                setError(e.message);
+            });
     }, []);
+
+    if (error) {
+        return (<p>{error}</p>);
+    }
+
+
 
     if (datedList.length === 0) {
         return <BlankList today={today_YMD} />;
