@@ -23,6 +23,7 @@ export function EditTask({ userName }) {
   React.useEffect(() => {
     fetch(`/api/task/${start_list_type}/${id}`)
         .then(handleFetchError)
+        .then((r) => (r.json()))
         .then((task) => {
           setOgDate(task.date || "");
           setTitle(task.title || "");
@@ -36,26 +37,11 @@ export function EditTask({ userName }) {
         })
   }, []);
 
-  async function handleFetchError(response) {
-    // takes in fetch response
-    // throws error with correct message if not valid
-    // returns jsonified response if valid
-    let responseObj;
-    try {
-      responseObj = await response.json();
-    } catch (error) {
-      throw new Error(`${response.status}: ${response.statusText}`);
-    }
-    if (!responseObj.ok) {
-      throw new Error(`${responseObj.msg}`);
-    }
-    return responseObj;
-  }
   
   async function update() {
     const response = await fetch(`api/task`, {
       method: 'put',
-      body: JSON.stringify({ old_date: ogDate, task: {id: id, title: title, details: details, date: date, time: time} }),
+      body: JSON.stringify({ old_date: ogDate, task: {id: id, title: (title||TITLE), details: details, date: date, time: time} }),
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
       },
@@ -83,7 +69,7 @@ export function EditTask({ userName }) {
       // this line probably needs some work too then
       const body = await response.json();
       if (body.msg) {
-        setDisplayError(`⚠ Error: ${body.msg}`);
+        setDisplayError(`Error: ${body.msg}`);
       } else {
         setDisplayError(`${response.status} Error: ${response.statusText}`);
       }
@@ -127,13 +113,17 @@ export function EditTask({ userName }) {
   );
 }
 
-function insert_in_order(list, task) {
-  for (let i in list) {
-    let t = list[i];
-    if ((t.date === task.date && t.time > task.time) || t.date > task.date) {
-      list.splice(i, 0, task);
-      return;
+async function handleFetchError(response) {
+  // takes in fetch response
+  // throws error with correct message if not valid
+  // returns jsonified response if valid
+  if (!response.ok) {
+    try {
+      await response.json();
+    } catch (error) {
+      throw new Error(`${response.status}: ${response.statusText}`);
     }
+    throw new Error(`${response.msg}`);
   }
-  list.push(task);
+  return response;
 }
