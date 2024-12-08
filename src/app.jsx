@@ -30,7 +30,6 @@ export default function App() {
             <div className='body'>
                 <header>
                     <h1>DoDue</h1>
-                    <p>{isAuthorized ? "authorized" : "not"}</p>
                     <NavLink className="menu" to="">Back to Login</NavLink>
                     {isAuthorized &&
                         (<><NavLink className="menu" to="lists">List View</NavLink>

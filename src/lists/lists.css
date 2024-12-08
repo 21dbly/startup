@@ -1,7 +1,7 @@
 #lists-main {
     display: flex;
     flex-direction: row;
-    margin: 10px 0px;
+    margin: 5px 0px;
     justify-content: space-evenly;
     flex: 1;
     align-items: normal;
@@ -17,7 +17,7 @@ h2, h3 {
     border: 2px solid black;
     padding: 0 10px;
     border-radius: 5px;
-    margin: 0 0px;
+    margin: 5px 0px;
 }
 
 .add-button {
@@ -44,9 +44,13 @@ h2, h3 {
 
 @media (max-width: 450px){
     #todo {
-        display: none;
+        width: 80%;
     }
     #today {
         width: 80%
+    }
+    #lists-main {
+        flex-direction: column;
+        align-items: center;
     }
 }
