@@ -20,6 +20,10 @@ h2, h3 {
     margin: 5px 0px;
 }
 
+.task {
+    cursor: pointer;
+}
+
 .add-button {
     display: inline;
     display: none;

@@ -46,10 +46,12 @@ button {
     background: #253F8C;
     border: none;
     border-radius: 3px;
+    cursor: pointer;
 }
 
 button:disabled {
     background: rgb(85, 85, 85);
+    cursor: auto;
 }
 
 @media (max-width: 400px) {

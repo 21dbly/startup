@@ -9,7 +9,7 @@ export function Task( {task} ) {
     }
 
     return (
-        <li onClick={handleClick}>
+        <li className='task' onClick={handleClick}>
             <span className='task-title'>{task.title || "Untitled"}</span>
             {" - "}<span className='task-details'>{task.details || ""}</span>
             {!task.date || (<>
