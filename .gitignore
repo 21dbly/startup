@@ -1,5 +1,5 @@
 # sensitive info
-database/dbConfig.json
+dbConfig.json
 
 # dependencies
 node_modules
