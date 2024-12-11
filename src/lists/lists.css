@@ -58,3 +58,23 @@ h2, h3 {
         align-items: center;
     }
 }
+
+#update {
+    z-index: 1;
+    position: fixed;
+    left: 0;
+    bottom: 30px;
+    width: 200px;
+    background-color: #253F8C;
+    color: white;
+    padding: 5px;
+    text-align: center;
+}
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}

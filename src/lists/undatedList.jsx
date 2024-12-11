@@ -2,20 +2,20 @@ import React from 'react';
 import { NewTaskButton } from './newTaskButton';
 import { Task } from './task';
 
-export function UndatedList({ userName }) {
-    const [undatedList, setUndatedList] = React.useState([]);
-    const [error, setError] = React.useState("");
+export function UndatedList({ undatedList, error }) {
+    // const [undatedList, setUndatedList] = React.useState([]);
+    // const [error, setError] = React.useState("");
 
-    React.useEffect(() => {
-        fetch(`/api/list/undated`)
-            .then(handleFetchError)
-            .then((r) => (r.json()))
-            .then((list) => {setUndatedList(list);})
-            .catch((e) => {
-                console.log(e.message);
-                setError(e.message);
-            });
-    }, []);
+    // React.useEffect(() => {
+    //     fetch(`/api/list/undated`)
+    //         .then(handleFetchError)
+    //         .then((r) => (r.json()))
+    //         .then((list) => {setUndatedList(list);})
+    //         .catch((e) => {
+    //             console.log(e.message);
+    //             setError(e.message);
+    //         });
+    // }, []);
     
     if (error) {
         return (<p>{error}</p>);
@@ -56,17 +56,17 @@ function BlankList() {
     );
 }
 
-async function handleFetchError(response) {
-    // takes in fetch response
-    // throws error with correct message if not valid
-    // returns jsonified response if valid
-    if (!response.ok) {
-      try {
-        await response.json();
-      } catch (error) {
-        throw new Error(`${response.status}: ${response.statusText}`);
-      }
-      throw new Error(`${response.msg}`);
-    }
-    return response;
-  }
+// async function handleFetchError(response) {
+//     // takes in fetch response
+//     // throws error with correct message if not valid
+//     // returns jsonified response if valid
+//     if (!response.ok) {
+//       try {
+//         await response.json();
+//       } catch (error) {
+//         throw new Error(`${response.status}: ${response.statusText}`);
+//       }
+//       throw new Error(`${response.msg}`);
+//     }
+//     return response;
+//   }

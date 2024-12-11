@@ -2,24 +2,24 @@ import React from 'react';
 import { NewTaskButton } from './newTaskButton';
 import { Task } from './task';
 
-export function DatedList({ userName }) {
-    const [datedList, setDatedList] = React.useState([]);
-    const [error, setError] = React.useState("");
+export function DatedList({ datedList, error }) {
+    // const [datedList, setDatedList] = React.useState([]);
+    // const [error, setError] = React.useState("");
 
     const today = new Date();
     //                                                                        I know this is not elegant. I'll fix it some day
     const today_YMD = `${today.getFullYear()}-${today.getMonth()+1}-${today.getDate() >= 10 ? today.getDate() : `0${today.getDate()}`}`;
 
-    React.useEffect(() => {
-        fetch(`/api/list/dated`)
-            .then(handleFetchError)
-            .then((response) => response.json())
-            .then((list) => {setDatedList(list);})
-            .catch((e) => {
-                console.log(e.message);
-                setError(e.message);
-            });
-    }, []);
+    // React.useEffect(() => {
+    //     fetch(`/api/list/dated`)
+    //         .then(handleFetchError)
+    //         .then((response) => response.json())
+    //         .then((list) => {setDatedList(list);})
+    //         .catch((e) => {
+    //             console.log(e.message);
+    //             setError(e.message);
+    //         });
+    // }, []);
 
     if (error) {
         return (<p>{error}</p>);
@@ -84,17 +84,17 @@ function SingleDateList({ date, list}) {
     );
 }
 
-async function handleFetchError(response) {
-    // takes in fetch response
-    // throws error with correct message if not valid
-    // returns jsonified response if valid
-    if (!response.ok) {
-      try {
-        await response.json();
-      } catch (error) {
-        throw new Error(`${response.status}: ${response.statusText}`);
-      }
-      throw new Error(`${response.msg}`);
-    }
-    return response;
-  }
+// async function handleFetchError(response) {
+//     // takes in fetch response
+//     // throws error with correct message if not valid
+//     // returns jsonified response if valid
+//     if (!response.ok) {
+//       try {
+//         await response.json();
+//       } catch (error) {
+//         throw new Error(`${response.status}: ${response.statusText}`);
+//       }
+//       throw new Error(`${response.msg}`);
+//     }
+//     return response;
+//   }
