@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './task.css';
 import { v4 as uuid } from 'uuid';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { ListUpdaterClass } from '../lists/updateLists';
 
 //default values
 const TITLE = "Untitled";
@@ -16,6 +17,16 @@ export function NewTask({ userName }) {
   const [date, setDate] = useState(date_clicked);
   const [time, setTime] = useState("");
 
+  const [ListUpdater, setListUpdater] = React.useState(null);
+
+  // sets up a new websocket connection each time you edit or make a task.
+  // Definitly not the best way to do this but it's what we've got for not
+  React.useEffect(() => {
+    const lu = new ListUpdaterClass(localStorage.getItem("userToken"));
+    setListUpdater(lu);
+    return () => {lu.socket.close()};
+  }, []);
+
   async function submit() {
     const response = await fetch(`api/task`, {
       method: 'post',
@@ -24,7 +35,12 @@ export function NewTask({ userName }) {
         'Content-type': 'application/json; charset=UTF-8',
       },
     });
+    
+
     if (response?.status === 200) {
+      if (ListUpdater) {
+        ListUpdater.sendEvent("task created");
+      }
       navigate('/lists');
     } else {
       // error

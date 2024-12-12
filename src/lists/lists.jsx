@@ -16,6 +16,7 @@ export function Lists({ userName }) {
   React.useEffect(() => {
     getLists()
     const lu = new ListUpdaterClass(localStorage.getItem("userToken"));
+    lu.setHandler(receiveMessage);
     setListUpdater(lu);
     return () => {lu.socket.close()};
   }, []);
@@ -24,6 +25,9 @@ export function Lists({ userName }) {
     setDatedError("");
     setUndatedError("");
 
+    // since we're only using loginToken cookies to get lists, you can only be logged in to 1 user at a time in 1 browser
+    // I wonder if that's possible to fix or if most websites have that requirement?
+    // when this happens, the displayed username can get temporarily out of sync with the actual user logged in
     await fetch(`/api/list/undated`)
       .then(handleFetchError)
       .then((r) => (r.json()))
@@ -41,6 +45,18 @@ export function Lists({ userName }) {
           console.log(e.message);
           setDatedError(e.message);
       });
+  }
+
+  function receiveMessage(msg) {
+    // I could make this check more organized and scalable
+    if (msg === "task edited" || msg === "task created" || msg === "task deleted") {
+      updateLists();
+    } else {
+      clearTimeout(timeoutId);
+      setUpdate(`websocket - ${msg}`);
+      const newId = setTimeout(() => {setUpdate("");}, 2000);
+      setTimeoutId(newId);
+    }
   }
 
   async function updateLists() {
@@ -63,7 +79,7 @@ export function Lists({ userName }) {
       <DatedList datedList={datedList} error={datedError}/>
       
       <UndatedList undatedList={undatedList} error={undatedError}/>
-      <button onClick={updateLists}>click for update</button>
+      {/* <button onClick={updateLists}>click for update</button> */}
     </main>
   );
 }
@@ -73,12 +89,13 @@ async function handleFetchError(response) {
   // throws error with correct message if not valid
   // returns jsonified response if valid
   if (!response.ok) {
+    let jsonified;
     try {
-      await response.json();
+      jsonified = await response.json();
     } catch (error) {
       throw new Error(`${response.status}: ${response.statusText}`);
     }
-    throw new Error(`${response.msg}`);
+    throw new Error(`${jsonified.msg}`);
   }
   return response;
 }

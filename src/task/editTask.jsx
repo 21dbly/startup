@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './task.css';
 import { useLocation, useNavigate } from 'react-router-dom';
 import {ModalMessage} from '../modalMessage/modalMessage.jsx';
+import { ListUpdaterClass } from '../lists/updateLists.jsx';
 
 //default values
 const TITLE = "Untitled";
@@ -18,6 +19,8 @@ export function EditTask({ userName }) {
   const [details, setDetails] = useState('');
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
+
+  const [ListUpdater, setListUpdater] = React.useState(null);
   
   // maybe local storage can help...
   React.useEffect(() => {
@@ -35,6 +38,12 @@ export function EditTask({ userName }) {
           console.log(e);
           setDisplayError(`Error: ${e.message}`);
         })
+
+  // sets up a new websocket connection each time you edit or make a task. Definitly not the best way to do this but it's what we've got for not
+  // I'll look for a better way but it will require lots of changes with the whole website
+    const lu = new ListUpdaterClass(localStorage.getItem("userToken"));
+    setListUpdater(lu);
+    return () => {lu.socket.close()};
   }, []);
 
   
@@ -47,6 +56,9 @@ export function EditTask({ userName }) {
       },
     });
     if (response?.status === 200) {
+      if (ListUpdater) {
+        ListUpdater.sendEvent("task edited");
+      }
       navigate('/lists');
     } else {
       // for some reason this line isn't working with errors
@@ -64,6 +76,9 @@ export function EditTask({ userName }) {
       method: 'delete',
     });
     if (response?.status === 200) {
+      if (ListUpdater) {
+        ListUpdater.sendEvent("task deleted");
+      }
       navigate('/lists');
     } else {
       // this line probably needs some work too then
