@@ -5,7 +5,7 @@ import { UndatedList } from './undatedList.jsx';
 import { ListUpdaterClass } from './updateLists.jsx';
 
 export function Lists({ userName }) {
-  const ListUpdater = new ListUpdaterClass(localStorage.getItem("userToken"));
+  const [ListUpdater, setListUpdater] = React.useState(null);
   const [update, setUpdate] = React.useState("");
   const [timeoutId, setTimeoutId] = React.useState(0);
   const [undatedList, setUndatedList] = React.useState([]);
@@ -13,7 +13,12 @@ export function Lists({ userName }) {
   const [datedList, setDatedList] = React.useState([]);
   const [datedError, setDatedError] = React.useState("");
 
-  React.useEffect(() => {getLists()}, []);
+  React.useEffect(() => {
+    getLists()
+    const lu = new ListUpdaterClass(localStorage.getItem("userToken"));
+    setListUpdater(lu);
+    return () => {lu.socket.close()};
+  }, []);
 
   async function getLists() {
     setDatedError("");
