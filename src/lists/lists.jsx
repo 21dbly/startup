@@ -2,8 +2,10 @@ import React from 'react';
 import './lists.css'
 import { DatedList } from './datedList.jsx';
 import { UndatedList } from './undatedList.jsx';
+import { ListUpdaterClass } from './updateLists.jsx';
 
 export function Lists({ userName }) {
+  const ListUpdater = new ListUpdaterClass(localStorage.getItem("userToken"));
   const [update, setUpdate] = React.useState("");
   const [timeoutId, setTimeoutId] = React.useState(0);
   const [undatedList, setUndatedList] = React.useState([]);
@@ -74,4 +76,23 @@ async function handleFetchError(response) {
     throw new Error(`${response.msg}`);
   }
   return response;
+}
+
+async function createListUpdater() {
+  const response = await fetch(endpoint, {
+    method: 'post',
+    body: JSON.stringify({ email: userName, password: password }),
+    headers: {'Content-type': 'application/json; charset=UTF-8'}
+  });
+  if (response?.status === 200) {
+    localStorage.setItem('userName', userName);
+    props.onLogin(userName);
+  } else {
+    const body = await response.json();
+    if (body.msg) {
+      setDisplayError(`⚠ Error: ${body.msg}`);
+    } else {
+      setDisplayError(`${response.status} Error: ${response.statusText}`);
+    }
+  }
 }

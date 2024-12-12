@@ -16,7 +16,7 @@ const dbUsers = db.collection('users');
   console.log(`Unable to connect to database because ${ex.message}`);
   process.exit(1);
 }).finally(() => {
-  console.log("tested");
+  console.log("database tested");
 });
 
 function getUser(email) {

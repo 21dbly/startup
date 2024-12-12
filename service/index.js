@@ -4,6 +4,7 @@ const app = express();
 const DB = require('./database.js');
 const cookieParser = require('cookie-parser');
 const bcrypt = require('bcrypt');
+const { peerProxy } = require('./peerProxy.js');
 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
@@ -38,7 +39,7 @@ apiRouter.post('/auth/create', async (req, res) => {
 
     setAuthCookie(res, user.loginToken);
 
-    res.send({ id: user._id });
+    res.send({ loginToken: user.loginToken });
   }
 });
 
@@ -167,9 +168,9 @@ secureApiRouter.delete('/task/:list_type(undated|dated)/:task_id', async (req, r
   res.send(`task ${task_id} deleted`);
 });
 
-app.listen(port, () => {
-  console.log(`Listening on port ${port}`);
-});
+// app.listen(port, () => {
+//   console.log(`Listening on port ${port}`);
+// });
 
 // ---------- Helper Functions -------------
 
@@ -210,3 +211,9 @@ function setAuthCookie(res, authToken) {
     sameSite: 'strict',
   });
 }
+
+const httpService = app.listen(port, () => {
+  console.log(`Listening on port ${port}`);
+});
+
+peerProxy(httpService);

@@ -13,6 +13,7 @@ export function Authenticated(props) {
       })
       .finally(() => {
         localStorage.removeItem('userName');
+        localStorage.removeItem('userToken');
         props.onLogout();
       })
   }

@@ -19,8 +19,13 @@ function peerProxy(httpServer) {
   server.on('connection', (ws, req) => {
     // const connection = { alive: true, ws: ws };
     // get userID from query parameter
-    const urlParams = new URLSearchParams(new URL(req.url).search);
-    const userID = urlParams.get('userID');
+    let userID;
+    try {
+      const urlParams = new URLSearchParams(req.url.replace("/ws/?",""));
+      userID = urlParams.get('userID');
+    } catch {
+      console.log(`no userID provided in ${req.url}`);
+    }
 
     const connection = { id: uuid.v4(), alive: true, ws: ws}
 
@@ -56,7 +61,7 @@ function peerProxy(httpServer) {
   // kill dead connections
   setInterval(() => {
     for (u in userConnections) {
-      connections.forEach((c) => {
+      userConnections[u].forEach((c) => {
         // Kill any connection that didn't respond to the ping last time
         if (!c.alive) {
           c.ws.terminate();
