@@ -82,22 +82,3 @@ async function handleFetchError(response) {
   }
   return response;
 }
-
-async function createListUpdater() {
-  const response = await fetch(endpoint, {
-    method: 'post',
-    body: JSON.stringify({ email: userName, password: password }),
-    headers: {'Content-type': 'application/json; charset=UTF-8'}
-  });
-  if (response?.status === 200) {
-    localStorage.setItem('userName', userName);
-    props.onLogin(userName);
-  } else {
-    const body = await response.json();
-    if (body.msg) {
-      setDisplayError(`⚠ Error: ${body.msg}`);
-    } else {
-      setDisplayError(`${response.status} Error: ${response.statusText}`);
-    }
-  }
-}
