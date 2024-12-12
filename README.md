@@ -103,14 +103,14 @@ For this deliverable I used webSocket to update the list in realtime if you're e
 
 - [x] **Backend listens for WebSocket connection** - done!
 - [x] **Frontend makes WebSocket connection** - done!
-- [ ] **Data sent over WebSocket connection** - not quite yet...
-- [ ] **WebSocket data displayed** - Almost...
-
+- [X] **Data sent over WebSocket connection** - after editing or creating a task, the client websocket sends a message that goes to all other connections from that same user telling lists to reload
+- [X] **WebSocket data displayed** - As the lists reload a small message appears saying it's reloading. A message also appears when the websocket connects.
 
 
 
 
 ## Things to be added in the future
+- [ ] unify and betterify error handling
 - [ ] include labels in newtask form? (for accessability and stuff)  
 - [ ] make tasks look nicer (css)
 - [ ] make login image scale better at different sizes
