@@ -86,7 +86,7 @@ For this deliverable I added backend endpoints to get lists, get task info, add 
 - [x] **Backend service endpoints** - Placeholders for login that stores the current user on the server. Endpoints for getting lists and adding and editing tasks.
 - [x] **Frontend calls service endpoints** - I did this using the fetch function.
 
-## DB/Login deliverable - _not deliverd to production yet (service has not been graded)_
+## DB/Login deliverable - _not deployed to production yet (service has not been graded)_
 
 For this deliverable I store and validate user information using the database, and I store each user list seperately in the database
 
@@ -97,20 +97,25 @@ For this deliverable I store and validate user information using the database, a
 - [x] **Use MongoDB to store credentials** - Stores both user and their lists/tasks.
 - [X] **Restricts functionality** - You cannot access any lists or make any tasks until you have logged in.
 
+## WebSocket deliverable - _not deployed to production yet (service has not been graded)_
+
+For this deliverable I used webSocket to update the list in realtime if you're editing the list from multiple devices.
+
+- [x] **Backend listens for WebSocket connection** - done!
+- [x] **Frontend makes WebSocket connection** - done!
+- [X] **Data sent over WebSocket connection** - after editing or creating a task, the client websocket sends a message that goes to all other connections from that same user telling lists to reload
+- [X] **WebSocket data displayed** - As the lists reload a small message appears saying it's reloading. A message also appears when the websocket connects.
+
+
+
 
 ## Things to be added in the future
-- [X] task deleting
-- [X] id's for each task (uuid?)
-- [X] task editing
-      
-Reorganization:
-  - [X] make add-task button a component
-  - [ ] include labels in newtask form? (for accessability and stuff)  
-  
+- [ ] unify and betterify error handling
+- [ ] include labels in newtask form? (for accessability and stuff)  
 - [ ] make tasks look nicer (css)
 - [ ] make login image scale better at different sizes
 - [ ] reformat dates and times to be better (Mon, Oct 1 or something)
-- [ ] make it nicer for phones (at least make it possible to see the other list)
+- [ ] make it nicer for phones?
 - [ ] ability to check off tasks instead of just deleting
 - [ ] ability to move tasks by dragging
 - [ ] repeating tasks
