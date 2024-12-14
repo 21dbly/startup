@@ -86,7 +86,7 @@ For this deliverable I added backend endpoints to get lists, get task info, add 
 - [x] **Backend service endpoints** - Placeholders for login that stores the current user on the server. Endpoints for getting lists and adding and editing tasks.
 - [x] **Frontend calls service endpoints** - I did this using the fetch function.
 
-## DB/Login deliverable - _not deployed to production yet (service has not been graded)_
+## DB/Login deliverable
 
 For this deliverable I store and validate user information using the database, and I store each user list seperately in the database
 
@@ -97,7 +97,7 @@ For this deliverable I store and validate user information using the database, a
 - [x] **Use MongoDB to store credentials** - Stores both user and their lists/tasks.
 - [X] **Restricts functionality** - You cannot access any lists or make any tasks until you have logged in.
 
-## WebSocket deliverable - _not deployed to production yet (service has not been graded)_
+## WebSocket deliverable
 
 For this deliverable I used webSocket to update the list in realtime if you're editing the list from multiple devices.
 
