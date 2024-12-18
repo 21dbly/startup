@@ -182,37 +182,93 @@ some | Run a function to test if any items match | a.some(i => i < 1)
     const literalRegex = /ab*/i;
 i means ignore case
 
+### Promises
+
+`new Promise((resolve, reject) => resolve(true))`
+
 ## React
 
 Shaodw DOM: creates a virtual copy of the DOM that is faster. Figures out any changes and updates the real DOM.  
 components can be class style or function syle. Function style are constant functions that return valid html.  
 
-### Promises
+### Hooks
 
-`new Promise((resolve, reject) => resolve(true))`
+State Hooks: remember information in state variables  
+ex: `const [index, setIndex] = useState(0);`  
+Context Hooks: receive info from distant parents without passing as props  
+ex: `const theme = useContext(ThemeContext);`  
+Ref Hooks: used to hold info that doesn't rerender component when updated  
+ex: `const inputRef = useRef(null);`  
+Effect Hooks: "connects a component to an external system"?  
+ex: `useEffect(...)`  
+Performance Hooks: used to optimize re-rendering  
+ex: `useMemo(...)`  
 
-# Internet
+## Internet
 
 Local use addresses: 10., 192.168  
 DHCP (Dynamic Host Configuration Protocol) assigns IP addresses to devices on a network
 
-# HTTP Requests:
+## HTTP Requests:
+
+### methods
+
+i know what these are for:  
+GET, PUT, PUSH, DELETE  
+idk what these are for:  
+OPTIONS, HEAD, TRACE, CONNECT, PATCH  
+
+### header fields
+
+Cookie, Host, Content-Type, etc...  
+
+Content-Type: application/json  
+determines media type of body of request  
+
+### status codes
+
+100s: informational responses  
+200s: successful  
+300s: redirection  
+400s: client error  
+500s: server error
 
 endpoint: the functions defined in Express. (the API?)  
 middleware: things that happen in before sending back an http request?  
 Express: to organize your middleware  
 
+### cookies
+
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies  
+Secure: only sent through https  
+HttpOnly: javascript can't access  
+SameSite=Strict: cookies only sent to cookie's origin site  
+
 ## Daemons--PM2
 
 kepps your node service running
 
-# Databases
+## Databases
 
 Use uuid to get unique identifiers  
 bcrypt is a hashing function you can use:  
 `await bcrypt.hash(password, 10)`  
 (number is how gobbled and time consuming you want it)
 
-# Security
+## Security
 
-- OWASP: open source security group
+- Always store passwords hashed  
+- OWASP: open source security group  
+
+## misc
+
+JSX = JavaScript XML  
+XML = Extensible Markup Language  
+JS = JavaScript  
+AWS = Amazon Web Services  
+NPM = Node Package Manager  
+NVM = Node Version Manager  
+
+Vite:  
+- serves code locally to test front-end and back-end  
+- bundles code for production  
